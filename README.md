@@ -1,3 +1,3 @@
 # TeamQuattro
 
-Hier liegen die Hoffnungen und Träume von Thaddäus.
+Smitty wie? Ähm...Smitty Werben Jaggerman Jensen er war die erste #1.

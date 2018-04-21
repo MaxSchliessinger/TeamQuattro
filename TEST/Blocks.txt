@@ -1,0 +1,69 @@
+import ij.IJ;
+import ij.*;
+import ij.gui.*;
+import ij.process.*;
+import ij.plugin.*;
+ 
+public class RCTmain_  implements PlugIn {							
+	
+	
+	private static int wide = 0; 									//Anngepasste Version des standartmäßig in ImageJ implemenierten "StackMaker" Tools.
+	private static int high = 0;									//Anzahl der Blöcke in X und Y Richtung
+	
+	public void run(String arg) {
+		
+		ImagePlus iplus = WindowManager.getCurrentImage();			
+		failcheck();												//Test ob ein Bild vorhanden ist
+		addDialogue();												//Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
+		ImageStack stack = createStack(iplus.getProcessor(), wide, high);				//Anzeige:  new ImagePlus("Blocks", stack).show();	//Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
+		
+	}
+	
+	
+	public void failcheck(){			//Test ob ein Bild vorhanden ist
+		
+		ImagePlus iplus = WindowManager.getCurrentImage();
+		if (iplus == null){
+			IJ.noImage(); 
+			return;
+			}
+		
+	}
+	
+	public void addDialogue(){			//Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
+		
+		GenericDialog dialog = new GenericDialog("Enter the number of blocks!");		//Nutzen des in ImageJ vorgefertigten "GenericDialog"
+		dialog.addNumericField("Number of blocks in a row: ", wide, 0);					//Hinzufügen von Eingabefeldern
+		dialog.addNumericField("Number of blocks in a column: ", high, 0);
+		dialog.showDialog();															//Anzeigen des Dialoges
+		
+		if (dialog.wasCanceled()){														//Prüfen ob Dialog abgebrochenb wurde
+			return;
+		}
+		
+		wide = (int) dialog.getNextNumber();											//Speichern der Eingaben in Variablen (muss in int umgewandelt werden)
+		high = (int) dialog.getNextNumber();
+		
+	}
+	
+	public ImageStack createStack(ImageProcessor iproc, int wide, int high) {			//Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
+		
+			int width = iproc.getWidth() / wide;
+			int height = iproc.getHeight() / high;
+			
+			ImageStack stack = new ImageStack(width, height);							//Anlegen eines ImageStacks
+			
+			for (int y = 0 ; y < high ; y++){
+				for (int x = 0 ; x < wide ; x++) {
+					iproc.setRoi(x * width, y * height, width, height);
+					stack.addSlice(null, iproc.crop());
+				}
+			}
+			
+			return stack;
+			
+		}	
+
+}
+	
+

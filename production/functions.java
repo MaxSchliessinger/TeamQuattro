@@ -1,5 +1,3 @@
-import java.time.Year;
-
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
@@ -7,7 +5,7 @@ import ij.WindowManager;
 import ij.process.FloatProcessor;
 import ij.process.ImageProcessor;
 
-public class functions {
+public class functions  {
 
 	static String title;
 	static boolean debug = false;
@@ -23,8 +21,7 @@ public class functions {
 		int width = iproc.getWidth() / wide;
 		int height = iproc.getHeight() / high;
 
-		ImageStack stack = new ImageStack(width, height); // Anlegen eines
-															// ImageStacks
+		ImageStack stack = new ImageStack(width, height); // Anlegen eines ImageStacks
 
 		for (int y = 0; y < high; y++) {
 			for (int x = 0; x < wide; x++) {
@@ -119,6 +116,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					if (rct.equals("A1_2")) // RGB to A1_2
@@ -129,6 +130,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					if (rct.equals("A1_3")) // RGB to A1_3
@@ -139,6 +144,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = -u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = -u + addval3;;
 					}
 
 					if (rct.equals("A1_4")) // RGB to A1_4
@@ -150,6 +159,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					if (rct.equals("A1_5")) // RGB to A1_5
@@ -161,6 +174,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					if (rct.equals("A1_6")) // RGB to A1_6
@@ -172,6 +189,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					if (rct.equals("A1_7")) // RGB to A1_7
@@ -183,6 +204,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					if (rct.equals("A1_8")) // RGB to A1_8
@@ -194,6 +219,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = -v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = -v + addval3;;
 					}
 
 					if (rct.equals("A1_9")) // RGB to A1_9
@@ -205,6 +234,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					if (rct.equals("A1_10")) // RGB to A1_10
@@ -216,6 +249,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					if (rct.equals("A1_11")) // RGB to A1_11
@@ -227,6 +264,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					if (rct.equals("A1_12")) // RGB to A1_12
@@ -238,6 +279,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					if (rct.equals("A2_1")) // RGB to A2_1
@@ -248,6 +293,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A2_2
@@ -258,6 +307,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A2_3
@@ -268,6 +321,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = -u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = -u + addval3;;
 					}
 
 					// RGB to A2_4
@@ -279,6 +336,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A2_5
@@ -290,6 +351,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A2_6
@@ -301,6 +366,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A2_7
@@ -312,6 +381,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A2_8
@@ -323,6 +396,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = -v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = -v + addval3;;
 					}
 
 					// RGB to A2_9
@@ -334,6 +411,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					if (rct.equals("A2_10")) // RGB to A2_10
@@ -345,6 +426,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A2_11
@@ -356,6 +441,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A2_12
@@ -367,6 +456,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A3_1
@@ -377,6 +470,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A3_2
@@ -387,6 +484,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A3_3
@@ -397,6 +498,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = -u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = -u + addval3;;
 					}
 
 					// RGB to A3_4
@@ -408,6 +513,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A3_5
@@ -419,6 +528,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A3_6
@@ -430,6 +543,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A3_7
@@ -441,6 +558,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A3_8
@@ -452,6 +573,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = -v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = -v + addval3;;
 					}
 
 					// RGB to A3_9
@@ -463,6 +588,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A3_10
@@ -474,6 +603,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A3_11
@@ -485,6 +618,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A3_12
@@ -496,6 +633,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A4_1
@@ -506,6 +647,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A4_2
@@ -516,6 +661,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A4_3
@@ -526,6 +675,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = -u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = -u + addval3;;
 					}
 
 					// RGB to A4_4
@@ -537,6 +690,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A4_5
@@ -548,6 +705,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A4_6
@@ -559,6 +720,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A4_7
@@ -570,6 +735,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A4_8
@@ -581,6 +750,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = -v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = -v + addval3;;
 					}
 
 					// RGB to A4_9
@@ -592,6 +765,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A4_10
@@ -603,6 +780,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A4_11
@@ -614,6 +795,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A4_12
@@ -625,6 +810,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A5_1
@@ -635,6 +824,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A5_2
@@ -645,6 +838,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A5_3
@@ -655,6 +852,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = -u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = -u + addval3;;
 					}
 
 					// RGB to A5_4
@@ -666,6 +867,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A5_5
@@ -677,6 +882,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A5_6
@@ -688,6 +897,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A5_7
@@ -699,6 +912,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A5_8
@@ -710,6 +927,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = -v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = -v + addval3;;
 					}
 
 					// RGB to A5_9
@@ -721,6 +942,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A5_10
@@ -732,6 +957,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A5_11
@@ -743,6 +972,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A5_12
@@ -754,6 +987,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A6_1
@@ -764,6 +1001,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A6_2
@@ -774,6 +1015,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A6_3
@@ -784,6 +1029,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = -u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = -u + addval3;;
 					}
 
 					// RGB to A6_4
@@ -795,6 +1044,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A6_5
@@ -806,6 +1059,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A6_6
@@ -817,6 +1074,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A6_7
@@ -828,6 +1089,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A6_8
@@ -839,6 +1104,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = -v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = -v + addval3;;
 					}
 
 					// RGB to A6_9
@@ -850,6 +1119,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A6_10
@@ -861,6 +1134,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A6_11
@@ -872,6 +1149,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A6_12
@@ -883,6 +1164,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A7_1
@@ -896,10 +1181,7 @@ public class functions {
 						
 						yvu[col][row][0] = y;
 						yvu[col][row][1] = v + addval3;;
-						yvu[col][row][2] = u + addval3;;
-						
-						
-						
+						yvu[col][row][2] = u + addval3;;				
 					}
 
 					// RGB to A7_2
@@ -910,6 +1192,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A7_3
@@ -920,6 +1206,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = -u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = -u + addval3;;
 					}
 
 					// RGB to A7_4
@@ -931,6 +1221,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A7_5
@@ -942,6 +1236,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A7_6
@@ -953,6 +1251,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A7_7
@@ -964,6 +1266,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A7_8
@@ -975,6 +1281,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = -v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = -v + addval3;;
 					}
 
 					// RGB to A7_9
@@ -986,6 +1296,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A7_10
@@ -997,6 +1311,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A7_11
@@ -1008,6 +1326,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A7_12
@@ -1019,6 +1341,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A8_1
@@ -1029,6 +1355,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A8_2
@@ -1039,6 +1369,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A8_3
@@ -1049,6 +1383,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = -u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = -u + addval3;;
 					}
 
 					// RGB to A8_4
@@ -1060,6 +1398,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A8_5
@@ -1071,6 +1413,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A8_6
@@ -1082,6 +1428,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A8_7
@@ -1093,6 +1443,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A8_8
@@ -1104,6 +1458,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = -v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = -v + addval3;;
 					}
 
 					// RGB to A8_9
@@ -1115,6 +1473,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A8_10
@@ -1126,6 +1488,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A8_11
@@ -1137,6 +1503,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A8_12
@@ -1148,6 +1518,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A9_1
@@ -1158,6 +1532,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A9_2
@@ -1168,6 +1546,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A9_3
@@ -1178,6 +1560,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = -u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = -u + addval3;;
 					}
 
 					// RGB to A9_4
@@ -1189,6 +1575,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A9_5
@@ -1200,6 +1590,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A9_6
@@ -1211,6 +1605,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A9_7
@@ -1222,6 +1620,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to A9_8
@@ -1233,6 +1635,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = -v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = -v + addval3;;
 					}
 
 					// RGB to A9_9
@@ -1244,6 +1650,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A9_10
@@ -1255,6 +1665,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A9_11
@@ -1266,6 +1680,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u + addval3;;
 					}
 
 					// RGB to A9_12
@@ -1277,6 +1695,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to B1_1
@@ -1287,6 +1709,10 @@ public class functions {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = u;;
 					}
 
 					// RGB to B1_2
@@ -1297,6 +1723,10 @@ public class functions {
 						values[0] = u;
 						values[1] = y;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = u;
+						yvu[col][row][1] = y;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 					// RGB to B2_1
@@ -1307,6 +1737,10 @@ public class functions {
 						values[0] = y;
 						values[1] = -v + addval3;
 						values[2] = u;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = u;;
 					}
 
 					// RGB to B2_3
@@ -1317,6 +1751,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u;
 						values[2] = -v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u;;
+						yvu[col][row][2] = -v + addval3;;
 					}
 
 					// RGB to B3_2
@@ -1327,6 +1765,10 @@ public class functions {
 						values[0] = u;
 						values[1] = -v + addval3;
 						values[2] = y;
+						
+						yvu[col][row][0] = u;
+						yvu[col][row][1] = -v + addval3;;
+						yvu[col][row][2] = y;;
 					}
 
 					// RGB to B3_3
@@ -1337,6 +1779,10 @@ public class functions {
 						values[0] = u;
 						values[1] = v + addval3;
 						values[2] = y;
+						
+						yvu[col][row][0] = u;
+						yvu[col][row][1] = v + addval3;;
+						yvu[col][row][2] = y;;
 					}
 
 					// RGB to B4_1
@@ -1347,6 +1793,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v;;
 					}
 
 					// RGB to B5_2
@@ -1357,6 +1807,10 @@ public class functions {
 						values[0] = v;
 						values[1] = y;
 						values[2] = -u + addval3;
+						
+						yvu[col][row][0] = v;
+						yvu[col][row][1] = y;;
+						yvu[col][row][2] = -u + addval3;;
 					}
 
 					// RGB to B6_3
@@ -1367,6 +1821,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v;;
 					}
 
 					// RGB to PEI09
@@ -1377,6 +1835,10 @@ public class functions {
 						values[0] = y;
 						values[1] = u + addval3;
 						values[2] = v + addval3;
+						
+						yvu[col][row][0] = y;
+						yvu[col][row][1] = u + addval3;;
+						yvu[col][row][2] = v + addval3;;
 					}
 
 				}
@@ -3078,5 +3540,6 @@ public class functions {
 		}
 
 	};
+	
 
 }

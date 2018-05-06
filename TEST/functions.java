@@ -1,5 +1,3 @@
-import java.time.Year;
-
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
@@ -7,7 +5,7 @@ import ij.WindowManager;
 import ij.process.FloatProcessor;
 import ij.process.ImageProcessor;
 
-public class functions {
+public class functions  {
 
 	static String title;
 	static boolean debug = false;
@@ -23,8 +21,7 @@ public class functions {
 		int width = iproc.getWidth() / wide;
 		int height = iproc.getHeight() / high;
 
-		ImageStack stack = new ImageStack(width, height); // Anlegen eines
-															// ImageStacks
+		ImageStack stack = new ImageStack(width, height); // Anlegen eines ImageStacks
 
 		for (int y = 0; y < high; y++) {
 			for (int x = 0; x < wide; x++) {
@@ -46,7 +43,7 @@ public class functions {
 	 * 
 	 */
 
-	// Benötigt ein Bild oder einen Ausschnitt, den Modus ("encr","decr") sowie die zu verwendende RCT
+	// Benötigt ein Bild oder einen Ausschnitt, den Modus ("enc","dec") sowie die zu verwendende RCT
 	// Transformiert alle Pixel mit der angegebenen RCT
 	public static int[][][] iprun(ImageProcessor ip, String mode, String rct) {
 
@@ -3543,5 +3540,6 @@ public class functions {
 		}
 
 	};
+	
 
 }

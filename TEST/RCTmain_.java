@@ -64,12 +64,17 @@ public class RCTmain_ implements PlugIn {
 		
 		for(int i = 1 ; i < sigen.length ; i++){
 			
-			functions.iprun(stack.getProcessor(i+1), mode , sigen[i-1]);   //if(i % wide == 1){  functions.iprun(stack.getProcessor(i+1), mode , sigen[(i+1)-(wide-1)]) }
+			if(i % wide == 1){  
+				functions.iprun(stack.getProcessor(i+1), mode , sigen[(i+1)-(wide-1)]) 
+			} else {
+				functions.iprun(stack.getProcessor(i+1), mode , sigen[i-1]);
+			}
 			
 		}
 		
 	}
 	
+	//Folgt noch!
 	public void decode(){
 		
 	}

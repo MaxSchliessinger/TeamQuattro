@@ -1,18 +1,19 @@
 # TeamQuattro
 
-Smitty wie? Ähm...Smitty Werben Jaggerman Jensen er war die erste #1.
+Smitty wie? Ã„hm...Smitty Werben Jaggerman Jensen er war die erste #1.
 
 
 
 Probleme:
-- Recheckige Bilder -> NullPointerEx
-- 3 Bilder bei decode pr�fen (getImageCount()?!)
+- Nicht quadratische Bilder -> NullPointerEx
+- Zusammensetzen der Bilder nach Encode + speichern
+- 3 Bilder Decode
 - Nur bestimmte Bildabmessungen verwenden (gerade?)
-
 
 Test:
 - Signalenergien speichern
 
 
-Gel�st:
-
+Gelöst:
+- Encode in jeweilige anzahl der Blockmenge
+- 3 Bilder bei Decode 

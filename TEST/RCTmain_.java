@@ -24,13 +24,13 @@ public class RCTmain_ implements PlugIn {
 			"A9_7", "A9_8", "A9_9", "A9_10", "A9_11", "A9_12", "B1_1", "B1_2", "B2_1", "B2_3", "B3_2", "B3_3", "B4_1",
 			"B5_2", "B6_3", "PEI09" };
 
-	// Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
+	// Dialog um Eingaben vom Nutzer bzgl. der BlockgrÃ¶ÃŸe einzuholen
 	public static void addDialogue() {
 
 		// Nutzen des in ImageJ vorgefertigten "GenericDialog"
 		GenericDialog dialog = new GenericDialog("Enter the number of blocks!");
 
-		// Hinzufügen von Eingabefeldern
+		// HinzufÃ¼gen von Eingabefeldern
 		dialog.addNumericField("Number of blocks in a row: ", 2, 0);
 		dialog.addNumericField("Number of blocks in a column: ", 2, 0);
 
@@ -45,7 +45,7 @@ public class RCTmain_ implements PlugIn {
 		// Anzeigen des Dialoges
 		dialog.showDialog();
 
-		// Prüfen ob Dialog abgebrochenb wurde
+		// PrÃ¼fen ob Dialog abgebrochenb wurde
 		if (dialog.wasCanceled()) {
 			return ;
 		}
@@ -83,19 +83,19 @@ public class RCTmain_ implements PlugIn {
 		// Test ob ein Bild vorhanden ist
 		functions.failcheck();
 		
-		// Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
+		// Dialog um Eingaben vom Nutzer bzgl. der BlockgrÃ¶ÃŸe einzuholen
 		addDialogue();
 		
 		if(mode == "dec"){
 			if(WindowManager.getImageCount() < 3){
-				IJ.showMessage("Du Idiot musst 3 Bilder auswählen, 3!!!");
+				IJ.showMessage("Bitte drei Bilder auswÃ¤hlen!");
 				return;
 
 			}
 		}
 
 		// Anzeige: new ImagePlus("Blocks", stack).show();
-		// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
+		// Funktion die das Bild zerteilt und die BlÃ¶cke auf einen Stack legt
 		ImageStack stack = functions.createStack(iplus.getProcessor(), wide, high);
 
 		//Signalenergien speichern
@@ -103,8 +103,8 @@ public class RCTmain_ implements PlugIn {
 
 		
 		
-		// BESTE RCT FÜR JEDEN BLOCK ERMITTELN
-		// Für alle Bildabschnitte
+		// BESTE RCT FÃœR JEDEN BLOCK ERMITTELN
+		// FÃ¼r alle Bildabschnitte
 		for (int x = 1; x <= stack.getSize(); x++) {
 			
 			int sigtemp = 0;
@@ -154,12 +154,12 @@ public class RCTmain_ implements PlugIn {
 		}
 		
 		
-		/*for (int z = 0 ; z < sigenergy.length ; z++){					//NUR FÜR TEST
+		/*for (int z = 0 ; z < sigenergy.length ; z++){					//NUR FÃœR TEST
 			System.out.println(sigenergy[z]);
 		} */
 		
 		/*
-		 * Folgenden Block mit RCT des ersten encoden, yuv Werte für jeden pixel
+		 * Folgenden Block mit RCT des ersten encoden, yuv Werte fÃ¼r jeden pixel
 		 * speichern, beste RCT ermitteln
 		 */
 

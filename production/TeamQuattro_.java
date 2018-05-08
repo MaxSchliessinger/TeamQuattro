@@ -4,6 +4,8 @@ import ij.ImageStack;
 import ij.WindowManager;
 import ij.gui.GenericDialog;
 import ij.plugin.PlugIn;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
 
 public class TeamQuattro_ implements PlugIn {
 
@@ -24,13 +26,13 @@ public class TeamQuattro_ implements PlugIn {
 			"A9_7", "A9_8", "A9_9", "A9_10", "A9_11", "A9_12", "B1_1", "B1_2", "B2_1", "B2_3", "B3_2", "B3_3", "B4_1",
 			"B5_2", "B6_3", "PEI09" };
 
-	// Dialog um Eingaben vom Nutzer bzgl. der BlockgrÃ¶ÃŸe einzuholen
+	// Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
 	public static void addDialogue() {
 
 		// Nutzen des in ImageJ vorgefertigten "GenericDialog"
 		GenericDialog dialog = new GenericDialog("Enter the number of blocks!");
 
-		// HinzufÃƒÂ¼gen von Eingabefeldern
+		// HinzufÃ¼gen von Eingabefeldern
 		dialog.addNumericField("Number of blocks in a row: ", 2, 0);
 		dialog.addNumericField("Number of blocks in a column: ", 2, 0);
 
@@ -45,7 +47,7 @@ public class TeamQuattro_ implements PlugIn {
 		// Anzeigen des Dialoges
 		dialog.showDialog();
 
-		// PrÃ¼fen ob Dialog abgebrochen wurde
+		// Prüfen ob Dialog abgebrochen wurde
 		if (dialog.wasCanceled()) {
 			return ;
 		}
@@ -57,23 +59,67 @@ public class TeamQuattro_ implements PlugIn {
 		
 	}
 	
-	public void encode(String[] sigen , ImageStack stack){
+	public void encode(String[] sigen , ImageStack stack, int w, int h){
 		functions.debug = true;
 		
+		ImagePlus[] imps = null;
+		ImageProcessor[] ips = null;
+		ImageProcessor[] ipstemp = null;
+		
+		imps = new ImagePlus[3];
+		ips = new ImageProcessor[3];
+		ipstemp = new ImageProcessor[3];
 		
 		
+		ips[0] = new FloatProcessor(w, h);
+		ips[1] = new FloatProcessor(w, h);
+		ips[2] = new FloatProcessor(w, h);
 		
-		functions.iprun(stack.getProcessor(1), mode , "A7_1");
+		ipstemp[0] = new FloatProcessor(w/wide, h/high);
+		ipstemp[1] = new FloatProcessor(w/wide, h/high);
+		ipstemp[2] = new FloatProcessor(w/wide, h/high);
+		
+		imps[0] = new ImagePlus("", ips[0]);
+		imps[1] = new ImagePlus("", ips[1]);
+		imps[2] = new ImagePlus("", ips[2]);
+		
+
+		//Erster Durchlauf mit fester RCT
+		ipstemp = functions.iprun(stack.getProcessor(1), mode , "A7_1",true);
+		
+		ips[0].insert(ipstemp[0], 0, 0);
+		ips[1].insert(ipstemp[1], 0, 0);
+		ips[2].insert(ipstemp[2], 0, 0);
+		
 		
 		for(int i = 1 ; i < sigen.length ; i++){
 			
 			if(i % wide == 1){  
-				functions.iprun(stack.getProcessor(i+1), mode , sigen[(i+1)-(wide-1)]);
+				
+				functions.iprun(stack.getProcessor(i+1), mode , sigen[(i+1)-(wide-1)],true);
+				
+//				if(i > sigen.length/wide){
+//				
+//				
+//				ips[0].insert(ipstemp[0], w/wide*i, 0);
+//				ips[1].insert(ipstemp[1], w/wide*i, 0);
+//				ips[2].insert(ipstemp[2], w/wide*i, 0);
+				
+				
 			} else {
-				functions.iprun(stack.getProcessor(i+1), mode , sigen[i-1]);
+				functions.iprun(stack.getProcessor(i+1), mode , sigen[i-1],true);
+				
+//				ips[0].insert(ipstemp[0], w/wide*i, 0);
+//				ips[1].insert(ipstemp[1], w/wide*i, 0);
+//				ips[2].insert(ipstemp[2], w/wide*i, 0);
+				
 			}
 			
 		}
+		
+		imps[0].show();
+		imps[1].show();
+		imps[2].show();
 		
 	}
 	
@@ -91,19 +137,19 @@ public class TeamQuattro_ implements PlugIn {
 		// Test ob ein Bild vorhanden ist
 		functions.failcheck();
 		
-		// Dialog um Eingaben vom Nutzer bzgl. der BlockgrÃ¶ÃŸe einzuholen
+		// Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
 		addDialogue();
 		
 		if(mode == "dec"){
 			if(WindowManager.getImageCount() < 3){
-				IJ.showMessage("Bitte drei Bilder auswÃƒÂ¤hlen!");
+				IJ.showMessage("Bitte drei Bilder auswählen!");
 				return;
 
 			}
 		}
 
 		// Anzeige: new ImagePlus("Blocks", stack).show();
-		// Funktion die das Bild zerteilt und die BlÃ¶cke auf einen Stack legt
+		// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
 		ImageStack stack = functions.createStack(iplus.getProcessor(), wide, high);
 
 		//Signalenergien speichern
@@ -111,8 +157,8 @@ public class TeamQuattro_ implements PlugIn {
 
 		
 		
-		// BESTE RCT FÃœR JEDEN BLOCK ERMITTELN
-		// FÃ¼r alle Bildabschnitte
+		// BESTE RCT FÜR JEDEN BLOCK ERMITTELN
+		// Für alle Bildabschnitte
 		for (int x = 1; x <= stack.getSize(); x++) {
 			
 			int sigtemp = 0;
@@ -141,12 +187,13 @@ public class TeamQuattro_ implements PlugIn {
 							
 							sigtemp = sigact;
 
-							sigenergy[x-1] = rcts[q]; 
+							sigenergy[x-1] = rcts[q];
 						}
 					}
 				}
 
 			}
+
 		}
 
 		for (int z = 0 ; z < sigenergy.length ; z++){
@@ -154,14 +201,14 @@ public class TeamQuattro_ implements PlugIn {
 		}
 	
 		if(mode == "enc"){
-		encode(sigenergy , stack);
+		encode(sigenergy , stack,iplus.getWidth(),iplus.getHeight());
 		}
 		else{
 			decode();
 		}
 		
 		
-		/*for (int z = 0 ; z < sigenergy.length ; z++){					//NUR FÃœR TEST
+		/*for (int z = 0 ; z < sigenergy.length ; z++){					//NUR FÜR TEST
 			System.out.println(sigenergy[z]);
 		} */
 

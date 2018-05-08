@@ -43,7 +43,7 @@ public class functions  {
 	 * 
 	 */
 
-	// Benötigt ein Bild oder einen Ausschnitt, den Modus ("encr","decr") sowie die zu verwendende RCT
+	// Benötigt ein Bild oder einen Ausschnitt, den Modus ("enc","dec") sowie die zu verwendende RCT
 	// Transformiert alle Pixel mit der angegebenen RCT
 	public static int[][][] iprun(ImageProcessor ip, String mode, String rct) {
 
@@ -54,7 +54,7 @@ public class functions  {
 		int addval3 = (1 << 8) - 1;
 		int col, row, p, r, g, b, y, u, v;
 		int values[] = new int[3];
-		int yvu[][][] = new int[h][w][3];
+		int yvu[][][] = new int[w][h][3];
 		double percent = 0;
 
 /*

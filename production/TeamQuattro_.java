@@ -30,7 +30,7 @@ public class TeamQuattro_ implements PlugIn {
 		// Nutzen des in ImageJ vorgefertigten "GenericDialog"
 		GenericDialog dialog = new GenericDialog("Enter the number of blocks!");
 
-		// Hinzufügen von Eingabefeldern
+		// HinzufÃ¼gen von Eingabefeldern
 		dialog.addNumericField("Number of blocks in a row: ", 2, 0);
 		dialog.addNumericField("Number of blocks in a column: ", 2, 0);
 
@@ -45,7 +45,7 @@ public class TeamQuattro_ implements PlugIn {
 		// Anzeigen des Dialoges
 		dialog.showDialog();
 
-		// Prüfen ob Dialog abgebrochenb wurde
+		// Prüfen ob Dialog abgebrochen wurde
 		if (dialog.wasCanceled()) {
 			return ;
 		}
@@ -55,17 +55,32 @@ public class TeamQuattro_ implements PlugIn {
 		high = (int) dialog.getNextNumber();
 		mode = dialog.getNextChoice();
 		
-
-		// ERROR wenn nicht 3 Bilder ausgewählt,  abbruch des Plugins fehlt!!
-		if(mode == "dec"){
-			if(WindowManager.getImageCount() < 3){
-				IJ.showMessage("Du Idiot musst 3 Bilder auswählen, 3!!!");
-
+	}
+	
+	public void encode(String[] sigen , ImageStack stack){
+		functions.debug = true;
+		
+		
+		
+		
+		functions.iprun(stack.getProcessor(1), mode , "A7_1");
+		
+		for(int i = 1 ; i < sigen.length ; i++){
+			
+			if(i % wide == 1){  
+				functions.iprun(stack.getProcessor(i+1), mode , sigen[(i+1)-(wide-1)]);
+			} else {
+				functions.iprun(stack.getProcessor(i+1), mode , sigen[i-1]);
 			}
+			
 		}
 		
 	}
 	
+	//Folgt noch!
+	public void decode(){
+		
+	}
 
 	
 	public void run(String arg) {
@@ -78,6 +93,14 @@ public class TeamQuattro_ implements PlugIn {
 		
 		// Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
 		addDialogue();
+		
+		if(mode == "dec"){
+			if(WindowManager.getImageCount() < 3){
+				IJ.showMessage("Bitte drei Bilder auswÃ¤hlen!");
+				return;
+
+			}
+		}
 
 		// Anzeige: new ImagePlus("Blocks", stack).show();
 		// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
@@ -108,7 +131,7 @@ public class TeamQuattro_ implements PlugIn {
 				for (int i = 0; i < yvu.length; i++) {
 					for (int y = 0; y < yvu[0].length; y++) {
 					
-						sigact = (yvu[y][i][0]*yvu[y][i][0])+(yvu[y][i][1]*yvu[y][i][1])+(yvu[y][i][2]*yvu[y][i][2]);
+						sigact = (yvu[i][y][0]*yvu[i][y][0])+(yvu[i][y][1]*yvu[i][y][1])+(yvu[i][y][2]*yvu[i][y][2]);
 						
 						if( sigtemp == 0){
 							sigtemp = sigact;
@@ -124,18 +147,24 @@ public class TeamQuattro_ implements PlugIn {
 				}
 
 			}
-
 		}
 
 		for (int z = 0 ; z < sigenergy.length ; z++){
 			System.out.println(sigenergy[z]);
 		}
 	
+		if(mode == "enc"){
+		encode(sigenergy , stack);
+		}
+		else{
+			decode();
+		}
 		
-		/*
-		 * Folgenden Block mit RCT des ersten encoden, yuv Werte für jeden pixel
-		 * speichern, beste RCT ermitteln
-		 */
+		
+		/*for (int z = 0 ; z < sigenergy.length ; z++){					//NUR FÜR TEST
+			System.out.println(sigenergy[z]);
+		} */
+
 
 	}
 

@@ -10,8 +10,7 @@ public class functions  {
 	static String title;
 	static boolean debug = false;
 
-	static ImagePlus[] imps = null;
-	static ImageProcessor[] ips = null;
+
 
 
 	// Angepasste Version des standartm‰ﬂig in ImageJ implemenierten "StackMaker" Tools.
@@ -47,6 +46,9 @@ public class functions  {
 	// Transformiert alle Pixel mit der angegebenen RCT
 	public static int[][][] iprun(ImageProcessor ip, String mode, String rct) {
 
+		ImagePlus[] imps = null;
+		ImageProcessor[] ips = null;
+		
 
 		int w = ip.getWidth(); // get size of input image
 		int h = ip.getHeight();
@@ -3533,6 +3535,8 @@ public class functions  {
 
 	public static ImageProcessor[] iprun(ImageProcessor ip, String mode, String rct,boolean imagereturn) {
 
+		ImagePlus[] imps2 = null;
+		ImageProcessor[] ips2 = null;
 
 		int w = ip.getWidth(); // get size of input image
 		int h = ip.getHeight();
@@ -3549,11 +3553,11 @@ public class functions  {
 		
 		if (debug) {
 
-			imps = new ImagePlus[3];
-			ips = new ImageProcessor[3];
-			ips[0] = new FloatProcessor(w, h);
-			ips[1] = new FloatProcessor(w, h);
-			ips[2] = new FloatProcessor(w, h);
+			imps2 = new ImagePlus[3];
+			ips2 = new ImageProcessor[3];
+			ips2[0] = new FloatProcessor(w, h);
+			ips2[1] = new FloatProcessor(w, h);
+			ips2[2] = new FloatProcessor(w, h);
 			String label[] = new String[3];
 			if (rct.equals("RGB")) {
 				label[0] = " (R)";
@@ -3564,9 +3568,9 @@ public class functions  {
 				label[1] = " (U)";
 				label[2] = " (V)";
 			}
-			imps[0] = new ImagePlus(title + " : " + rct + label[0], ips[0]);
-			imps[1] = new ImagePlus(title + " : " + rct + label[1], ips[1]);
-			imps[2] = new ImagePlus(title + " : " + rct + label[2], ips[2]);
+			imps2[0] = new ImagePlus(title + " : " + rct + label[0], ips2[0]);
+			imps2[1] = new ImagePlus(title + " : " + rct + label[1], ips2[1]);
+			imps2[2] = new ImagePlus(title + " : " + rct + label[2], ips2[2]);
 
 		}
 		
@@ -6975,9 +6979,9 @@ public class functions  {
 				if(debug){
 				
 					// put the pixel back
-					ips[0].putPixelValue(col, row, values[0]);
-					ips[1].putPixelValue(col, row, values[1]);
-					ips[2].putPixelValue(col, row, values[2]);
+					ips2[0].putPixelValue(col, row, values[0]);
+					ips2[1].putPixelValue(col, row, values[1]);
+					ips2[2].putPixelValue(col, row, values[2]);
 					
 					System.out.println("Pixel " + col + " | " + row + "   y:" + values[0]+ "   v:" + values[1]+ "   u:" + values[2]);
 				
@@ -7003,9 +7007,9 @@ public class functions  {
 
 			// show separated images
 			if (debug) {
-				imps[0].show();
-				imps[1].show();
-				imps[2].show();
+				imps2[0].show();
+				imps2[1].show();
+				imps2[2].show();
 			}
 		}
 		/*
@@ -7013,7 +7017,7 @@ public class functions  {
 */		
 		
 		
-	return ips;
+	return ips2;
 		
 	};
 

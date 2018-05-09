@@ -79,43 +79,72 @@ public class TeamQuattro_ implements PlugIn {
 		ipstemp[1] = new FloatProcessor(w/wide, h/high);
 		ipstemp[2] = new FloatProcessor(w/wide, h/high);
 		
-		imps[0] = new ImagePlus("", ips[0]);
-		imps[1] = new ImagePlus("", ips[1]);
-		imps[2] = new ImagePlus("", ips[2]);
+		imps[0] = new ImagePlus("1", ips[0]);
+		imps[1] = new ImagePlus("2", ips[1]);
+		imps[2] = new ImagePlus("3", ips[2]);
+				 
+		 
 		
+		for (int b = 0 ; b < high ; b++){
+			for (int m = 0 ; m < wide ; m++){
+								
+					if(m==0 && b==0){
+						//Erster Durchlauf mit fester RCT
+						
+						ipstemp[0] = new FloatProcessor(w/wide, h/high);
+						ipstemp[1] = new FloatProcessor(w/wide, h/high);
+						ipstemp[2] = new FloatProcessor(w/wide, h/high);
+						
+						
+						
+						ipstemp = functions.iprun(stack.getProcessor(1), mode , "A7_1",true);
+						
+						ips[0].insert(ipstemp[0], 0, 0);
+						ips[1].insert(ipstemp[1], 0, 0);
+						ips[2].insert(ipstemp[2], 0, 0);
+						
+						
+					}else{
+	
+						ipstemp[0] = new FloatProcessor(w/wide, h/high);
+						ipstemp[1] = new FloatProcessor(w/wide, h/high);
+						ipstemp[2] = new FloatProcessor(w/wide, h/high);
+						
+						ipstemp = functions.iprun(stack.getProcessor(m+b*wide+1), mode , "A7_1",true);
+						 
+						ips[0].insert(ipstemp[0], w/wide*m, h/high*b); 
+						ips[1].insert(ipstemp[1], w/wide*m, h/high*b);
+						ips[2].insert(ipstemp[2], w/wide*m, h/high*b);
+					}
 
-		//Erster Durchlauf mit fester RCT
-		ipstemp = functions.iprun(stack.getProcessor(1), mode , "A7_1",true);
-		
-		ips[0].insert(ipstemp[0], 0, 0);
-		ips[1].insert(ipstemp[1], 0, 0);
-		ips[2].insert(ipstemp[2], 0, 0);
-		
-		
-		for(int i = 1 ; i < sigen.length ; i++){
-			
-			if(i % wide == 1){  
-				
-				functions.iprun(stack.getProcessor(i+1), mode , sigen[(i+1)-(wide-1)],true);
-				
-//				if(i > sigen.length/wide){
-//				
-//				
-//				ips[0].insert(ipstemp[0], w/wide*i, 0);
-//				ips[1].insert(ipstemp[1], w/wide*i, 0);
-//				ips[2].insert(ipstemp[2], w/wide*i, 0);
-				
-				
-			} else {
-				functions.iprun(stack.getProcessor(i+1), mode , sigen[i-1],true);
-				
-//				ips[0].insert(ipstemp[0], w/wide*i, 0);
-//				ips[1].insert(ipstemp[1], w/wide*i, 0);
-//				ips[2].insert(ipstemp[2], w/wide*i, 0);
-				
 			}
-			
 		}
+		 
+		
+		
+//			
+//			if(i % wide == 1){  
+//				
+//				functions.iprun(stack.getProcessor(i+1), mode , sigen[(i+1)-(wide-1)],true);
+//				
+////				if(i > sigen.length/wide){
+////				
+////				
+////				ips[0].insert(ipstemp[0], w/wide*i, 0);
+////				ips[1].insert(ipstemp[1], w/wide*i, 0);
+////				ips[2].insert(ipstemp[2], w/wide*i, 0);
+//				
+//				
+//			} else {
+//				functions.iprun(stack.getProcessor(i+1), mode , sigen[i-1],true);
+//				
+////				ips[0].insert(ipstemp[0], w/wide*i, 0);
+////				ips[1].insert(ipstemp[1], w/wide*i, 0);
+////				ips[2].insert(ipstemp[2], w/wide*i, 0);
+//				
+//			}
+//			
+//		}
 		
 		imps[0].show();
 		imps[1].show();
@@ -208,9 +237,9 @@ public class TeamQuattro_ implements PlugIn {
 		}
 		
 		
-		/*for (int z = 0 ; z < sigenergy.length ; z++){					//NUR FÜR TEST
-			System.out.println(sigenergy[z]);
-		} */
+		for (int z = 0 ; z < sigenergy.length ; z++){					//NUR FÜR TEST
+			System.out.println("       **********************   "+sigenergy[z]);
+		} 
 
 
 	}

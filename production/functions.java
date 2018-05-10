@@ -3547,13 +3547,9 @@ public class functions  {
 		int yvu[][][] = new int[w][h][3];
 		double percent = 0;
 
-/*
- * DEBUG START
- */
-		
-		if (debug) {
 
-			imps2 = new ImagePlus[3];
+
+			
 			ips2 = new ImageProcessor[3];
 			ips2[0] = new FloatProcessor(w, h);
 			ips2[1] = new FloatProcessor(w, h);
@@ -3568,15 +3564,9 @@ public class functions  {
 				label[1] = " (U)";
 				label[2] = " (V)";
 			}
-			imps2[0] = new ImagePlus(title + " : " + rct + label[0], ips2[0]);
-			imps2[1] = new ImagePlus(title + " : " + rct + label[1], ips2[1]);
-			imps2[2] = new ImagePlus(title + " : " + rct + label[2], ips2[2]);
 
-		}
-		
-/*
- * DEBUG END
- */
+
+
 
 		y = 0;
 		u = 0;
@@ -6997,24 +6987,7 @@ public class functions  {
 			percent = ((col + 1) * 100) / w;
 			IJ.showStatus("CSCmod_ is loading, may take a while. Status: " + percent + "%");
 		}
-		
-
-/*
-* DEBUG START
-*/
-		
-		if(debug){
-
-			// show separated images
-			if (debug) {
-				imps2[0].show();
-				imps2[1].show();
-				imps2[2].show();
-			}
-		}
-		/*
-* DEBUG END
-*/		
+			
 		
 		
 	return ips2;

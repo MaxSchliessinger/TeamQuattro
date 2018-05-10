@@ -60,7 +60,7 @@ public class TeamQuattro_ implements PlugIn {
 	}
 	
 	public void encode(String[] sigen , ImageStack stack, int w, int h){
-		functions.debug = false;
+		functions.debug = true;
 		
 		ImagePlus[] imps = null;
 		ImageProcessor[] ips = null;

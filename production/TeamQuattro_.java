@@ -60,7 +60,7 @@ public class TeamQuattro_ implements PlugIn {
 	}
 	
 	public void encode(String[] sigen , ImageStack stack, int w, int h){
-		functions.debug = true;
+		functions.debug = false;
 		
 		ImagePlus[] imps = null;
 		ImageProcessor[] ips = null;
@@ -169,19 +169,25 @@ public class TeamQuattro_ implements PlugIn {
 		// Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
 		addDialogue();
 		
+		// 3 Bilder bei Rücktransformation 
 		if(mode == "dec"){
 			if(WindowManager.getImageCount() < 3){
 				IJ.showMessage("Bitte drei Bilder auswählen!");
 				return;
-
 			}
+		}
+		
+		// Ungerade Bildmaße abfangen
+		if(iplus.getWidth()%wide > 0 || iplus.getHeight()%high > 0 ){
+				IJ.showMessage("Bitte Bild(er) mit geraden Bildmaßen wählen!");
+				return;
 		}
 
 		// Anzeige: new ImagePlus("Blocks", stack).show();
 		// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
 		ImageStack stack = functions.createStack(iplus.getProcessor(), wide, high);
 
-		//Signalenergien speichern
+		// Signalenergien speichern
 		String sigenergy[] = new String[wide*high];  //Signalwerte speichern
 
 		

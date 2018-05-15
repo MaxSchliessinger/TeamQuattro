@@ -1,6 +1,13 @@
 # TeamQuattro
 
 
+Notizen:
+
+-3 For schleifen xy inline + blockweise
+-jeweils rücktransformierte rgb werte
+	-> Vergleichen ob werte mit Original übereinstimmen
+
+
 Probleme:
 - Ungerade blockgröße vermeiden (vielfaches von .. ?!)
 - 3 Bilder einlesen

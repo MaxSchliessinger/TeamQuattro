@@ -10,6 +10,7 @@ public class functions  {
 	static String title;
 	static boolean debug = false;
 
+	static int y1,v1,u1;
 
 
 
@@ -105,6 +106,7 @@ public class functions  {
 			for (row = 0; row < h; row++) {
 				// get the pixel
 				p = ip.getPixel(col, row);
+				
 				r = ((p & 0xff0000) >> 16); // R
 				g = ((p & 0x00ff00) >> 8); // G
 				b = (p & 0x0000ff); // B
@@ -1180,7 +1182,7 @@ public class functions  {
 						values[0] = y;
 						values[1] = v + addval3;
 						values[2] = u + addval3;
-						
+											
 						yvu[col][row][0] = y;
 						yvu[col][row][1] = v + addval3;
 						yvu[col][row][2] = u + addval3;				
@@ -1850,9 +1852,12 @@ public class functions  {
 /*																																													*/
 /*------------------------------------------------------------------------------------------*/
 				else if (mode.equals("dec")) {
-					r = ((p & 0xff0000) >> 16); // Y
-					g = ((p & 0x00ff00) >> 8); // U
-					b = (p & 0x0000ff); // V
+					
+					r = y1; // R
+					g = u1; // G
+					b = v1; // B
+					
+					
 
 					if (rct.equals("A1_1")) // A1_1 to RGB a1=a2=0
 					{
@@ -1865,6 +1870,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A1_2")) // A1_2 to RGB a1=1 a2=0, R<=>G
@@ -1878,6 +1887,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A1_3")) // A1_3 to RGB a1=0 a2=1, B<=>G
@@ -1891,6 +1904,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A1_4")) // A1_4 to RGB a1=a2=0 e=1/4
@@ -1905,6 +1922,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A1_5")) // A1_5 to RGB a1=1 a2=0, e=1/4,
@@ -1920,6 +1941,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A1_6")) // A1_6 to RGB a1=0 a2=1, e=1/4,
@@ -1935,6 +1960,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A1_7")) // A1_7 to RGB a1=a2=0 e=1/4 B<=>R
@@ -1949,6 +1978,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A1_8")) // A1_8 to RGB a1=1 a2=0, e=1/4,
@@ -1964,6 +1997,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A1_9 to RGB a1=0 a2=1, e=1/4, R=>B=>G=>R
@@ -1978,6 +2015,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A1_10 to RGB a1=a2=0 e=1/2
@@ -1992,6 +2033,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A1_11 to RGB a1=a2=0 e=1/2
@@ -2006,6 +2051,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A1_12 to RGB a1=a2=0 e=1/2 R<=>B
@@ -2020,6 +2069,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_1 to RGB a1=1 a2=0
@@ -2033,6 +2086,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_2 to RGB a1=1 a2=0 R<=>G
@@ -2046,6 +2103,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_3 to RGB a1=1 a2=0, B<=>G
@@ -2059,6 +2120,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_4 to RGB a1=1 a2=0, e=1/4
@@ -2073,6 +2138,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_5 to RGB a1=1 a2=0 e=1/4 R<=>G
@@ -2087,6 +2156,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_6 to RGB a1=1 a2=0, e=1/4, B<=>G
@@ -2101,6 +2174,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_7 to RGB a1=1 a2=0, e=1/4, B<=>R
@@ -2115,6 +2192,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_8 to RGB a1=0 a2=1, e=1/4, R=>G=>B=>R
@@ -2129,6 +2210,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_9 to RGB a1=a2=0 e=1/4 R=>B=>G=>R
@@ -2143,6 +2228,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_10 to RGB a1=1 a2=0, e=1/2
@@ -2157,6 +2246,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_11 to RGB a1=1 a2=0, e=1/2, B<=>G
@@ -2171,6 +2264,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A2_12 to RGB a1=0 a2=1, e=1/2, B<=>R
@@ -2185,6 +2282,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_1 to RGB a1=a2=0 e=1/2 B<=>G
@@ -2198,6 +2299,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_2 to RGB a1=0 a2=1, R<=>G
@@ -2211,6 +2316,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_3 to RGB a1=a2=0 B<=>G
@@ -2224,6 +2333,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_4 to RGB a1=0 a2=1, e=1/4
@@ -2238,6 +2351,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_5 to RGB a1=0 a2=1, e=1/4, R<=>G
@@ -2252,6 +2369,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_6 to RGB a1=a2=0 e=1/4 B<=>G
@@ -2266,6 +2387,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_7 to RGB a1=1 a2=0, e=1/4, B<=>R
@@ -2280,6 +2405,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_8 to RGB a1=a2=0 e=1/4 R=>G=>B=>R
@@ -2294,6 +2423,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_9 to RGB a1=1 a2=0, e=1/4, R=>B=>G=>R
@@ -2308,6 +2441,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_10 to RGB a1=0 a2=1, e=1/2
@@ -2322,6 +2459,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_11 to RGB a1=a2=0 e=1/2 B<=>G
@@ -2336,6 +2477,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A3_12 to RGB a1=1 a2=0, e=1/2, B<=>R
@@ -2350,6 +2495,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_1 to RGB a1=1/2 a2=0
@@ -2363,6 +2512,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_2 to RGB a1=1/2 a2=0, R<=>G
@@ -2376,6 +2529,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_3 to RGB a1=1/2 a2=0, B<=>G
@@ -2389,6 +2546,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_4 to RGB a1=1/2 a2=0, e=1/4
@@ -2403,6 +2564,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_5 to RGB a1=1/2 a2=0, e=1/4, R<=>G
@@ -2417,6 +2582,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_6 to RGB a1=1/2 a2=0, e=1/4, B<=>G
@@ -2431,6 +2600,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_7 to RGB a2=1/2 a1=0, e=1/4, B<=>R
@@ -2445,6 +2618,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_8 to RGB a1=a2=1/2, e=1/4, R=>G=>B=>R
@@ -2459,6 +2636,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_9 to RGB a2=1/2 a1=0, e=1/4, R=>B=>G=>R
@@ -2473,6 +2654,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_10 to RGB a1=1/2 a2=0, e=1/2
@@ -2487,6 +2672,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_11 to RGB a1=a2=1/2, e=1/2, B<=>G
@@ -2501,6 +2690,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A4_12 to RGB a2=1/2 a1=0, e=1/2, B<=>R
@@ -2515,6 +2708,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_1 to RGB a1=1/2 a2=0, e=1/2, B<=>R
@@ -2528,6 +2725,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_2 to RGB a1=a2=1/2, R<=>G
@@ -2541,6 +2742,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_3 to RGB a2=1/2 a1=0, B<=>G
@@ -2554,6 +2759,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_4 to RGB a2=1/2 a1=0, e=1/4
@@ -2568,6 +2777,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_5 to RGB a1=a2=1/2, e=1/4, R<=>G
@@ -2582,6 +2795,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_6 to RGB a2=1/2 a1=0, e=1/4, B<=>G
@@ -2596,6 +2813,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_7 to RGB a1=1/2 a2=0, e=1/4, B<=>R
@@ -2610,6 +2831,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_8 to RGB a1=1/2 a2=0, e=1/4, R=>G=>B=>R
@@ -2624,6 +2849,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_9 to RGB a1=a2=1/2, e=1/4, R=>B=>G=>R
@@ -2638,6 +2867,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_10 to RGB a2=1/2 a1=0, e=1/2
@@ -2652,6 +2885,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_11 to RGB a2=1/2 a1=0, e=1/2, B<=>G
@@ -2666,6 +2903,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A5_12 to RGB a1=1/2 a2=0, e=1/2, B<=>R
@@ -2680,6 +2921,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_1 to RGB a1=a2=1/2
@@ -2693,6 +2938,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_2 to RGB a2=1/2 a1=0, R<=>G
@@ -2706,6 +2955,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_3 to RGB a1=1/2 a2=0, B<=>G
@@ -2719,6 +2972,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_4 to RGB a1=a2=1/2, e=1/4
@@ -2733,6 +2990,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_5 to RGB a2=1/2 a1=0, e=1/4, R<=>G
@@ -2747,6 +3008,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_6 to RGB a1=1/2 a2=0, e=1/4, B<=>G
@@ -2761,6 +3026,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_7 to RGB a1=a2=1/2, e=1/4, B<=>R
@@ -2775,6 +3044,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_8 to RGB a2=1/2 a1=0, e=1/4, R=>G=>B=>R
@@ -2789,6 +3062,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_9 to RGB a1=1/2 a2=0, e=1/4, R=>B=>G=>R
@@ -2803,6 +3080,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_10 to RGB a1=a2=1/2, e=1/2
@@ -2817,6 +3098,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_11 to RGB a1=1/2 a2=0, e=1/2, B<=>G
@@ -2831,6 +3116,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A6_12 to RGB a1=a2=1/2, e=1/2, B<=>R
@@ -2845,6 +3134,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_1 to RGB a1=a2=1/4 == YUV
@@ -2858,6 +3151,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_2 to RGB a1=1/2 a2=1/4, R<=>G
@@ -2871,6 +3168,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_3 to RGB a1=1/4 a2=1/2, B<=>G
@@ -2884,6 +3185,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_4 to RGB a1=a2=1/4, e=1/4
@@ -2898,6 +3203,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_5 to RGB a1=1/2 a2=1/4, e=1/4, R<=>G
@@ -2912,6 +3221,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_6 to RGB a1=1/4 a2=1/2, e=1/4, B<=>G
@@ -2926,6 +3239,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_7 to RGB a1=a2=1/4, e=1/4, B<=>R
@@ -2940,6 +3257,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_8 to RGB a1=1/2 a2=1/4, e=1/4, R=>G=>B=>R
@@ -2954,6 +3275,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_9 to RGB a1=1/4 a2=1/2, e=1/4, R=>B=>G=>R
@@ -2968,6 +3293,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_10 to RGB a1=a2=1/4, e=1/2
@@ -2982,6 +3311,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_11 to RGB a1=1/4 a2=1/2, e=1/2, B<=>G
@@ -2996,6 +3329,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A7_12 to RGB a1=a2=1/4, e=1/2, B<=>R
@@ -3010,6 +3347,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_1 to RGB a1=1/2 a2=1/4
@@ -3023,6 +3364,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_2 to RGB a1=a2=1/4, R<=>G
@@ -3036,6 +3381,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_3 to RGB a1=1/2 a2=1/4, B<=>G
@@ -3049,6 +3398,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_4 to RGB a1=1/2 a2=1/4, e=1/4
@@ -3063,6 +3416,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_5 to RGB a1=a2=1/4, e=1/4, R<=>G
@@ -3077,6 +3434,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_6 to RGB a1=1/2 a2=1/4, e=1/4, B<=>G
@@ -3091,6 +3452,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_7 to RGB a1=1/4 a2=1/2, e=1/4, B<=>R
@@ -3105,6 +3470,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_8 to RGB a1=1/4 a2=1/2, e=1/4, R=>G=>B=>R
@@ -3119,6 +3488,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_9 to RGB a1=a2=1/4, e=1/4, R=>B=>G=>R
@@ -3133,6 +3506,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_10 to RGB a1=1/2 a2=1/4, e=1/2
@@ -3147,6 +3524,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_11 to RGB a1=1/2 a2=1/4, e=1/2, B<=>G
@@ -3161,6 +3542,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A8_12 to RGB a1=1/2 a2=1/4, e=1/2, B<=>R
@@ -3175,6 +3560,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A9_1 to RGB a1=1/4 a2=1/2
@@ -3188,6 +3577,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A9_2 to RGB a1=1/4 a2=1/2, R<=>G
@@ -3201,6 +3594,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A9_3 to RGB a1=a2=1/4, B<=>G
@@ -3228,6 +3625,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A9_5 to RGB a1=1/4 a2=1/2, e=1/4, R<=>G
@@ -3242,6 +3643,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					// A9_6 to RGB a1=a2=1/4, e=1/4, B<=>G
@@ -3256,6 +3661,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A9_7")) // A9_7 to RGB a1=1/2 a2=1/4,
@@ -3271,6 +3680,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A9_8")) // A9_8 to RGB a1=a2=1/4, e=1/4,
@@ -3286,6 +3699,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A9_9")) // A9_9 to RGB a1=1/2 a2=1/4,
@@ -3301,6 +3718,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A9_10")) // A9_10 to RGB a1=1/4 a2=1/2,
@@ -3316,6 +3737,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A9_11")) // A9_11 to RGB a1=a2=1/4, e=1/2,
@@ -3331,6 +3756,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("A9_12")) // A9_12 to RGB a1=1/2 a2=1/4,
@@ -3346,6 +3775,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("B1_1")) // B1_1 to RGB
@@ -3359,6 +3792,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("B1_2")) // B1_2 to RGB
@@ -3372,6 +3809,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("B2_1")) // B2_1 to RGB
@@ -3385,6 +3826,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("B2_3")) // B2_3 to RGB
@@ -3398,6 +3843,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("B3_2")) // B3_2 to RGB
@@ -3411,6 +3860,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("B3_3")) // B3_3 to RGB
@@ -3424,6 +3877,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("B4_1")) // B4_1 to RGB
@@ -3437,6 +3894,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("B5_2")) // B5_2 to RGB
@@ -3450,6 +3911,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("B6_3")) // B6_3 to RGB
@@ -3463,6 +3928,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 					if (rct.equals("PEI09")) // PEI09 to RGB
@@ -3476,6 +3945,10 @@ public class functions  {
 						values[0] = r;
 						values[1] = g;
 						values[2] = b;
+						
+						yvu[col][row][0] = r;
+						yvu[col][row][1] = g;
+						yvu[col][row][2] = b;
 					}
 
 				} else {
@@ -3501,13 +3974,10 @@ public class functions  {
 /*
 * DEBUG END
 */
-				
-				
-				
+			
 				
 			}
-			percent = ((col + 1) * 100) / w;
-			IJ.showStatus("CSCmod_ is loading, may take a while. Status: " + percent + "%");
+
 		}
 		
 
@@ -3527,7 +3997,6 @@ public class functions  {
 		/*
 * DEBUG END
 */		
-		
 		
 	return yvu;
 		
@@ -6962,12 +7431,7 @@ public class functions  {
 					values[2] = b;
 				}
 
-				
-/*
-* DEBUG START
-*/
-				if(debug){
-				
+		
 					// put the pixel back
 					ips2[0].putPixelValue(col, row, values[0]);
 					ips2[1].putPixelValue(col, row, values[1]);
@@ -6975,12 +7439,7 @@ public class functions  {
 					
 					System.out.println("Pixel " + col + " | " + row + "   y:" + values[0]+ "   v:" + values[1]+ "   u:" + values[2]);
 				
-				}
-/*
-* DEBUG END
-*/
-				
-				
+		
 				
 				
 			}

@@ -1,9 +1,13 @@
+import java.awt.HeadlessException;
+
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
 import ij.WindowManager;
 import ij.gui.GenericDialog;
+import ij.plugin.NewPlugin;
 import ij.plugin.PlugIn;
+import ij.process.ColorProcessor;
 import ij.process.FloatProcessor;
 import ij.process.ImageProcessor;
 
@@ -79,9 +83,9 @@ public class TeamQuattro_ implements PlugIn {
 		ipstemp[1] = new FloatProcessor(w/wide, h/high);
 		ipstemp[2] = new FloatProcessor(w/wide, h/high);
 		
-		imps[0] = new ImagePlus("1", ips[0]);
-		imps[1] = new ImagePlus("2", ips[1]);
-		imps[2] = new ImagePlus("3", ips[2]);
+		imps[0] = new ImagePlus("y", ips[0]);
+		imps[1] = new ImagePlus("u", ips[1]);
+		imps[2] = new ImagePlus("v", ips[2]);
 				 
 		 
 		
@@ -95,8 +99,6 @@ public class TeamQuattro_ implements PlugIn {
 						ipstemp[1] = new FloatProcessor(w/wide, h/high);
 						ipstemp[2] = new FloatProcessor(w/wide, h/high);
 						
-						
-						
 						ipstemp = functions.iprun(stack.getProcessor(1), mode , "A7_1",true);
 						
 						ips[0].insert(ipstemp[0], 0, 0);
@@ -109,10 +111,10 @@ public class TeamQuattro_ implements PlugIn {
 						ipstemp[0] = new FloatProcessor(w/wide, h/high);
 						ipstemp[1] = new FloatProcessor(w/wide, h/high);
 						ipstemp[2] = new FloatProcessor(w/wide, h/high);
-						
-						ipstemp = functions.iprun(stack.getProcessor(m+b*wide+1), mode , "A7_1",true);
+								
+						ipstemp = functions.iprun(stack.getProcessor(m+b*wide+1), mode , sigen[b*wide+m],true);
 						 
-						ips[0].insert(ipstemp[0], w/wide*m, h/high*b); 
+						ips[0].insert(ipstemp[0], w/wide*m, h/high*b);
 						ips[1].insert(ipstemp[1], w/wide*m, h/high*b);
 						ips[2].insert(ipstemp[2], w/wide*m, h/high*b);
 					}
@@ -152,16 +154,102 @@ public class TeamQuattro_ implements PlugIn {
 		
 	}
 	
-	//Folgt noch!
-	public void decode(){
+
+	public void decode(int w, int h){
+				
+		// Alle Bilder zerteilen und je Block in einem Array zusammenführen
 		
+		ImagePlus imps = null;
+		
+		ImagePlus img1 = WindowManager.getImage("y.tif");
+		ImagePlus img2 = WindowManager.getImage("u.tif");
+		ImagePlus img3 = WindowManager.getImage("v.tif");
+		
+		ImageProcessor[] tempimg = new ImageProcessor[1];
+		
+		ImageProcessor[] ips = new ImageProcessor[1];
+		//ips[0] = new FloatProcessor(w, h);
+		ips[0] = new ColorProcessor(w, h);
+		imps = new ImagePlus("Endresultat : Spaghetti", ips[0]);
+		
+		tempimg[0] = new ColorProcessor(w/wide, h/high);
+		
+
+		// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
+		ImageStack stack1 = functions.createStack(img1.getProcessor(), wide, high);
+		ImageStack stack2 = functions.createStack(img2.getProcessor(), wide, high);
+		ImageStack stack3 = functions.createStack(img3.getProcessor(), wide, high);
+		
+		int yvu1[][][];
+		int yvu2[] = {0,0,0};
+		
+		int xins= 0;
+		int yins= 0;
+		int counter= 0;
+		
+		for(int z = 1 ; z <= wide*high ; z ++){
+			
+
+			
+			String rctdec = null;
+				
+			
+			
+			// WELCHER RCT WIRD GENUTZT
+			
+			
+			for(int x = 0 ; x < w/wide ; x++){
+				for(int y= 0 ; y < h/high ; y++){
+					
+					functions.y1 = (int) stack1.getProcessor(z).getPixelValue(x, y);
+				
+					functions.u1 = (int) stack2.getProcessor(z).getPixelValue(x, y);
+					
+					functions.v1 = (int) stack3.getProcessor(z).getPixelValue(x, y);					
+					
+					if(z == 1){
+						yvu1 = functions.iprun(stack1.getProcessor(z), "dec", "A7_1");
+					} else {
+						yvu1 = functions.iprun(stack1.getProcessor(z), "dec", "A7_1");
+					}		
+										
+					yvu2[0] = yvu1[x][y][0];
+					yvu2[1] = yvu1[x][y][1];
+					yvu2[2] = yvu1[x][y][2];
+									
+					
+					tempimg[0].putPixel(x, y, yvu2);
+				
+					IJ.showStatus("RUNING    Spalte : " + x + " |   Zeile : "+y );
+				}	
+				
+			}
+			
+			ips[0].insert(tempimg[0], w/wide*xins, h/high*yins);
+			
+			if( counter == wide-1 ){
+				counter = 0;
+				yins++;
+				xins =0;
+				
+			} else {
+				counter++;
+				xins++;
+				
+			}			
+			
+			
+		}
+		
+	
+		imps.show();
+			
+
 	}
 
 	
 	public void run(String arg) {
 
-		
-		ImagePlus iplus = WindowManager.getCurrentImage();
 		
 		// Test ob ein Bild vorhanden ist
 		functions.failcheck();
@@ -169,83 +257,122 @@ public class TeamQuattro_ implements PlugIn {
 		// Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
 		addDialogue();
 		
-		// 3 Bilder bei Rücktransformation 
-		if(mode == "dec"){
+		
+		
+		// Transformation
+		if( mode == "enc"){
+			ImagePlus iplus = WindowManager.getCurrentImage();
+			
+			// Ungerade Bildmaße abfangen
+			if(iplus.getWidth()%wide > 0 || iplus.getHeight()%high > 0 ){
+					IJ.showMessage("Bitte anderes Bild wählen!");
+					return;
+			}
+
+			// Anzeige: new ImagePlus("Blocks", stack).show();
+			// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
+			ImageStack stack = functions.createStack(iplus.getProcessor(), wide, high);
+
+			// Signalenergien speichern
+			String sigenergy[] = new String[wide*high];  //Signalwerte speichern
+
+			
+			
+			// BESTE RCT FÜR JEDEN BLOCK ERMITTELN
+			// Für alle Bildabschnitte
+			for (int x = 1; x <= stack.getSize(); x++) {
+				
+				int sigtemp = 0;
+				int sigact = 0;
+				
+				// Jede RCT
+				for (int q = 0; q < rcts.length; q++) {
+
+					System.out.println("***************  Abschnitt : " + x + "     Fange an mit RCT " + rcts[q]);
+					System.out.println("BEST : " + sigenergy[x-1]);
+
+					
+					int yvu[][][] = functions.iprun(stack.getProcessor(x), mode, rcts[q]);
+							
+					// Signalenergie per Pixel im Block , Bester wird gespeichert in sigenergy[]
+					for (int i = 0; i < yvu.length; i++) {
+						for (int y = 0; y < yvu[0].length; y++) {
+						
+							sigact = (yvu[i][y][0]*yvu[i][y][0])+(yvu[i][y][1]*yvu[i][y][1])+(yvu[i][y][2]*yvu[i][y][2]);
+							
+							if( sigtemp == 0){
+								sigtemp = sigact;
+							} else if( sigact < sigtemp){
+								
+								System.out.println("SWAP : "  + sigtemp + " = " + sigact);
+								
+								sigtemp = sigact;
+
+								sigenergy[x-1] = rcts[q];
+							}
+						}
+					}
+
+				}
+
+			}
+			
+			encode(sigenergy , stack,iplus.getWidth(),iplus.getHeight());
+			
+			
+			for (int z = 0 ; z < sigenergy.length ; z++){
+				System.out.println(sigenergy[z]);
+			}
+			
+			
+		// Rücktransformation
+		} else {
+			
+			
+			ImagePlus iplus = WindowManager.getCurrentImage();
+			
+			// 3 Bilder bei Rücktransformation vorhanden? 
 			if(WindowManager.getImageCount() < 3){
 				IJ.showMessage("Bitte drei Bilder auswählen!");
 				return;
 			}
-		}
-		
-		// Ungerade Bildmaße abfangen
-		if(iplus.getWidth()%wide > 0 || iplus.getHeight()%high > 0 ){
-				IJ.showMessage("Bitte Bild(er) mit geraden Bildmaßen wählen!");
+			
+			// Bildgröße prüfen
+			if(WindowManager.getImage(1).getHeight() != WindowManager.getImage(2).getHeight() 
+					|| WindowManager.getImage(1).getHeight() != WindowManager.getImage(3).getHeight()
+					|| WindowManager.getImage(2).getHeight() != WindowManager.getImage(3).getHeight() ){
+				IJ.showMessage("Bitte drei gleich große Bilder auswählen!");
 				return;
-		}
-
-		// Anzeige: new ImagePlus("Blocks", stack).show();
-		// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
-		ImageStack stack = functions.createStack(iplus.getProcessor(), wide, high);
-
-		// Signalenergien speichern
-		String sigenergy[] = new String[wide*high];  //Signalwerte speichern
-
-		
-		
-		// BESTE RCT FÜR JEDEN BLOCK ERMITTELN
-		// Für alle Bildabschnitte
-		for (int x = 1; x <= stack.getSize(); x++) {
-			
-			int sigtemp = 0;
-			int sigact = 0;
-			
-			// Jede RCT
-			for (int q = 0; q < rcts.length; q++) {
-
-				System.out.println("***************  Abschnitt : " + x + "     Fange an mit RCT " + rcts[q]);
-				System.out.println("BEST : " + sigenergy[x-1]);
-
-				
-				int yvu[][][] = functions.iprun(stack.getProcessor(x), mode, rcts[q]);
-						
-				// Signalenergie per Pixel im Block , Bester wird gespeichert in sigenergy[]
-				for (int i = 0; i < yvu.length; i++) {
-					for (int y = 0; y < yvu[0].length; y++) {
-					
-						sigact = (yvu[i][y][0]*yvu[i][y][0])+(yvu[i][y][1]*yvu[i][y][1])+(yvu[i][y][2]*yvu[i][y][2]);
-						
-						if( sigtemp == 0){
-							sigtemp = sigact;
-						} else if( sigact < sigtemp){
-							
-							System.out.println("SWAP : "  + sigtemp + " = " + sigact);
-							
-							sigtemp = sigact;
-
-							sigenergy[x-1] = rcts[q];
-						}
-					}
-				}
-
 			}
-
+			
+			if(WindowManager.getImage(1).getWidth() != WindowManager.getImage(2).getWidth() 
+					|| WindowManager.getImage(1).getWidth() != WindowManager.getImage(3).getWidth()
+					|| WindowManager.getImage(2).getWidth() != WindowManager.getImage(3).getWidth() ){
+				IJ.showMessage("Bitte drei gleich große Bilder auswählen!");
+				return;
+			}
+			
+			
+			// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
+			ImageStack stack = functions.createStack(iplus.getProcessor(), wide, high);
+			
+			
+			// Ungerade Bildmaße abfangen
+			if(iplus.getWidth()%wide > 0 || iplus.getHeight()%high > 0 ){
+					IJ.showMessage("Bitte anderes Bild wählen!");
+					return;
+			}
+			
+			
+			decode(iplus.getWidth(),iplus.getHeight());
+			
+			
+			
+			
+			
 		}
 
-		for (int z = 0 ; z < sigenergy.length ; z++){
-			System.out.println(sigenergy[z]);
-		}
-	
-		if(mode == "enc"){
-		encode(sigenergy , stack,iplus.getWidth(),iplus.getHeight());
-		}
-		else{
-			decode();
-		}
-		
-		
-		for (int z = 0 ; z < sigenergy.length ; z++){					//NUR FÜR TEST
-			System.out.println("       **********************   "+sigenergy[z]);
-		} 
+
 
 
 	}

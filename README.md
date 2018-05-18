@@ -3,25 +3,26 @@
 
 Notizen:
 
--3 For schleifen xy inline + blockweise
--jeweils rücktransformierte rgb werte
-	-> Vergleichen ob werte mit Original übereinstimmen
+
 
 
 Probleme:
-- Ungerade blockgröße vermeiden (vielfaches von .. ?!)
-- 3 Bilder einlesen
-- 3 Bilder Rücktransformation
-	- Reverse Trans
 
 
 Test:
+-jeweils rÃ¼cktransformierte rgb werte
+	-> Vergleichen ob werte mit Original Ã¼bereinstimmen
 - Signalenergien speichern
 - Nur bestimmte Bildabmessungen verwenden (gerade?!)
+
+- Ungerade blockgrÃ¶ÃŸe vermeiden (vielfaches von .. ?!)
+- 3 Bilder einlesen
+- 3 Bilder RÃ¼cktransformation
+	- Reverse Trans
+
+
+GelÃ¶st:
 - Zusammensetzen der Bilder nach Encode
-
-
-Gelöst:
 - Encode in jeweilige Anzahl der Blockmenge
 - 3 Bilder bei Decode 
 - Nicht quadratische Bilder -> NullPointerEx

@@ -2,6 +2,8 @@
 
 
 Notizen:
+-Signalenergie des gesamten Transformierten Bildes
+-Richtiger RCT für Rücktransformation
 
 
 

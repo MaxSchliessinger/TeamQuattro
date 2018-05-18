@@ -7,18 +7,15 @@ Notizen:
 
 
 Probleme:
-
+- Signalenergien für Decode speichern
 
 Test:
 -jeweils rücktransformierte rgb werte
 	-> Vergleichen ob werte mit Original übereinstimmen
-- Signalenergien speichern
-- Nur bestimmte Bildabmessungen verwenden (gerade?!)
 
+- Nur bestimmte Bildabmessungen verwenden (gerade?!)
 - Ungerade blockgröße vermeiden (vielfaches von .. ?!)
-- 3 Bilder einlesen
-- 3 Bilder Rücktransformation
-	- Reverse Trans
+
 
 
 Gelöst:
@@ -26,5 +23,7 @@ Gelöst:
 - Encode in jeweilige Anzahl der Blockmenge
 - 3 Bilder bei Decode 
 - Nicht quadratische Bilder -> NullPointerEx
-
+- 3 Bilder einlesen
+- 3 Bilder Rücktransformation
+	- Reverse Trans
 

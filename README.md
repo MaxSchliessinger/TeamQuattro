@@ -3,18 +3,15 @@
 
 Notizen:
 - Signalenergie des gesamten Transformierten Bildes
-- Richtiger RCT für Rücktransformation
-
 
 
 
 Probleme:
-- Signalenergien für Decode speichern
+
 
 Test:
--jeweils rücktransformierte rgb werte
-	-> Vergleichen ob werte mit Original übereinstimmen
-
+- Richtiger RCT für Rücktransformation
+- Signalenergien für Decode speichern
 - Nur bestimmte Bildabmessungen verwenden (gerade?!)
 - Ungerade blockgröße vermeiden (vielfaches von .. ?!)
 
@@ -28,4 +25,6 @@ Gelöst:
 - 3 Bilder einlesen
 - 3 Bilder Rücktransformation
 	- Reverse Trans
+- jeweils rücktransformierte rgb werte
+	-> Vergleichen ob werte mit Original übereinstimmen
 

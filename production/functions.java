@@ -14,8 +14,8 @@ public class functions  {
 
 
 
-	// Angepasste Version des standartmäßig in ImageJ implemenierten "StackMaker" Tools.
-	// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
+	// Angepasste Version des standartmÃ¤ÃŸig in ImageJ implemenierten "StackMaker" Tools.
+	// Funktion die das Bild zerteilt und die BlÃ¶cke auf einen Stack legt
 	public static ImageStack createStack(ImageProcessor iproc, int wide, int high) {
 
 		int width = iproc.getWidth() / wide;
@@ -43,7 +43,7 @@ public class functions  {
 	 * 
 	 */
 
-	// Benötigt ein Bild oder einen Ausschnitt, den Modus ("enc","dec") sowie die zu verwendende RCT
+	// BenÃ¶tigt ein Bild oder einen Ausschnitt, den Modus ("enc","dec") sowie die zu verwendende RCT
 	// Transformiert alle Pixel mit der angegebenen RCT
 	public static int[][][] iprun(ImageProcessor ip, String mode, String rct) {
 
@@ -58,7 +58,6 @@ public class functions  {
 		int col, row, p, r, g, b, y, u, v;
 		int values[] = new int[3];
 		int yvu[][][] = new int[w][h][3];
-		double percent = 0;
 
 /*
  * DEBUG START
@@ -4004,7 +4003,6 @@ public class functions  {
 
 	public static ImageProcessor[] iprun(ImageProcessor ip, String mode, String rct,boolean imagereturn) {
 
-		ImagePlus[] imps2 = null;
 		ImageProcessor[] ips2 = null;
 
 		int w = ip.getWidth(); // get size of input image

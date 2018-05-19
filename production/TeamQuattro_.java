@@ -18,7 +18,7 @@ public class TeamQuattro_ implements PlugIn {
 	static String mode;
 
 	
-
+	//Array das zu Erleichterung des Zugriffs die Namen aller RCTs beeinhaltet
 	static String[] rcts = { "A1_1", "A1_2", "A1_3", "A1_4", "A1_5", "A1_6", "A1_7", "A1_8", "A1_9", "A1_10", "A1_11",
 			"A1_12", "A2_1", "A2_2", "A2_3", "A2_4", "A2_5", "A2_6", "A2_7", "A2_8", "A2_9", "A2_10", "A2_11", "A2_12",
 			"A3_1", "A3_2", "A3_3", "A3_4", "A3_5", "A3_6", "A3_7", "A3_8", "A3_9", "A3_10", "A3_11", "A3_12", "A4_1",
@@ -63,6 +63,7 @@ public class TeamQuattro_ implements PlugIn {
 		
 	}
 	
+	//Funktion zur adaptiven Hintransformierung eines RGB-Bildes in den YUV Farbraum
 	public void encode(String[] sigen , ImageStack stack, int w, int h){
 		functions.debug = true;
 		
@@ -129,7 +130,7 @@ public class TeamQuattro_ implements PlugIn {
 		
 	}
 	
-
+	//Funktion zur Rücktransformierung dreier YUV Bilder in den RGB Farbraum 
 	public void decode(int w, int h){
 				
 		// Alle Bilder zerteilen und je Block in einem Array zusammenführen

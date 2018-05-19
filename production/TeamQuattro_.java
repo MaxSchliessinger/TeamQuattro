@@ -145,7 +145,7 @@ public class TeamQuattro_ implements PlugIn {
 		
 		ImageProcessor[] ips = new ImageProcessor[1];
 		ips[0] = new ColorProcessor(w, h);
-		imps = new ImagePlus("Endresultat : Spaghetti", ips[0]);
+		imps = new ImagePlus("RGB Resultat", ips[0]);
 		
 		tempimg[0] = new ColorProcessor(w/wide, h/high);
 		
@@ -182,7 +182,7 @@ public class TeamQuattro_ implements PlugIn {
 						yvu1 = functions.iprun(stack1.getProcessor(z), "dec", "A7_1");
 					} else {
 						
-						System.out.println("FEHLER  :  SIGENERGY =  " + (z-2)  + "   "+ sigenergy[z-2]);
+						//System.out.println("FEHLER  :  SIGENERGY =  " + (z-2)  + "   "+ sigenergy[z-2]);
 						
 						yvu1 = functions.iprun(stack1.getProcessor(z), "dec", sigenergy[z-2]);
 					}		

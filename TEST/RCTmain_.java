@@ -5,7 +5,7 @@ import ij.WindowManager;
 import ij.gui.GenericDialog;
 import ij.plugin.PlugIn;
 
-public class RCTmain_ implements PlugIn {
+public class TeamQuattro_ implements PlugIn {
 
 	static int wide;
 	static int high;

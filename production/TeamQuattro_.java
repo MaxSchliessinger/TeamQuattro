@@ -113,7 +113,7 @@ public class TeamQuattro_ implements PlugIn {
 						ipstemp[1] = new FloatProcessor(w/wide, h/high);
 						ipstemp[2] = new FloatProcessor(w/wide, h/high);
 								
-						ipstemp = functions.iprun(stack.getProcessor(m+b*wide+1), mode , sigen[b*wide+m],true);
+						ipstemp = functions.iprun(stack.getProcessor(m+b*wide+1), mode , sigen[b*wide+m-1],true);
 						 
 						ips[0].insert(ipstemp[0], w/wide*m, h/high*b);
 						ips[1].insert(ipstemp[1], w/wide*m, h/high*b);

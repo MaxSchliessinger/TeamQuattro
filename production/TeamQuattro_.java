@@ -90,10 +90,13 @@ public class TeamQuattro_ implements PlugIn {
 				 
 		 
 		
-		for (int b = 0 ; b < high ; b++){
-			for (int m = 0 ; m < wide ; m++){
+		for (int b = 0 ; b < high ; b++)
+		{
+			for (int m = 0 ; m < wide ; m++)
+			{
 								
-					if(m==0 && b==0){
+					if(m==0 && b==0)
+					{
 						//Erster Durchlauf mit fester RCT
 						
 						ipstemp[0] = new FloatProcessor(w/wide, h/high);
@@ -107,7 +110,9 @@ public class TeamQuattro_ implements PlugIn {
 						ips[2].insert(ipstemp[2], 0, 0);
 						
 						
-					}else{
+					}
+					else
+					{
 	
 						ipstemp[0] = new FloatProcessor(w/wide, h/high);
 						ipstemp[1] = new FloatProcessor(w/wide, h/high);
@@ -165,12 +170,15 @@ public class TeamQuattro_ implements PlugIn {
 		int yins= 0;
 		int counter= 0;
 		
-		for(int z = 1 ; z <= wide*high ; z ++){
+		for(int z = 1 ; z <= wide*high ; z ++)
+		{
 			
 			String[] rctdec = null;
 			
-			for(int x = 0 ; x < w/wide ; x++){
-				for(int y= 0 ; y < h/high ; y++){
+			for(int x = 0 ; x < w/wide ; x++)
+			{
+				for(int y= 0 ; y < h/high ; y++)
+				{
 					
 					functions.y1 = (int) stack1.getProcessor(z).getPixelValue(x, y);
 				
@@ -178,9 +186,12 @@ public class TeamQuattro_ implements PlugIn {
 					
 					functions.v1 = (int) stack3.getProcessor(z).getPixelValue(x, y);					
 					
-					if(z == 1){
+					if(z == 1)
+					{
 						yvu1 = functions.iprun(stack1.getProcessor(z), "dec", "A7_1");
-					} else {
+					}
+					else 
+					{
 						
 						//System.out.println("FEHLER  :  SIGENERGY =  " + (z-2)  + "   "+ sigenergy[z-2]);
 						
@@ -206,7 +217,8 @@ public class TeamQuattro_ implements PlugIn {
 			int sigact = 0;
 			
 			// Jede RCT
-			for (int q = 0; q < rcts.length; q++) {
+			for (int q = 0; q < rcts.length; q++)
+			{
 
 				System.out.println("***************  Abschnitt : " + z + "     Fange an mit RCT " + rcts[q]);
 				System.out.println("BEST : " + sigenergy[z-1]);
@@ -215,14 +227,19 @@ public class TeamQuattro_ implements PlugIn {
 				int yvu[][][] = functions.iprun(tempimg[0], "enc", rcts[q]);
 						
 				// Signalenergie per Pixel im Block , Bester wird gespeichert in sigenergy[]
-				for (int i = 0; i < yvu.length; i++) {
-					for (int y = 0; y < yvu[0].length; y++) {
+				for (int i = 0; i < yvu.length; i++) 
+				{
+					for (int y = 0; y < yvu[0].length; y++)
+					{
 					
 						sigact = (yvu[i][y][0]*yvu[i][y][0])+(yvu[i][y][1]*yvu[i][y][1])+(yvu[i][y][2]*yvu[i][y][2]);
 						
-						if( sigtemp == 0){
+						if( sigtemp == 0)
+						{
 							sigtemp = sigact;
-						} else if( sigact < sigtemp){
+						} 
+						else if( sigact < sigtemp)
+						{
 							
 							System.out.println("SWAP : "  + sigtemp + " = " + sigact);
 							
@@ -242,15 +259,17 @@ public class TeamQuattro_ implements PlugIn {
 			
 			ips[0].insert(tempimg[0], w/wide*xins, h/high*yins);
 			
-			if( counter == wide-1 ){
+			if( counter == wide-1 )
+			{
 				counter = 0;
 				yins++;
 				xins =0;
 				
-			} else {
+			} 
+			else 
+			{
 				counter++;
-				xins++;
-				
+				xins++;	
 			}			
 			
 		}
@@ -272,11 +291,13 @@ public class TeamQuattro_ implements PlugIn {
 		
 		
 		// Transformation
-		if( mode == "enc"){
+		if( mode == "enc")
+		{
 			ImagePlus iplus = WindowManager.getCurrentImage();
 			
 			// Ungerade Bildmaße abfangen
-			if(iplus.getWidth()%wide > 0 || iplus.getHeight()%high > 0 ){
+			if(iplus.getWidth()%wide > 0 || iplus.getHeight()%high > 0 )
+			{
 					IJ.showMessage("Bitte anderes Bild wählen!");
 					return;
 			}
@@ -292,13 +313,15 @@ public class TeamQuattro_ implements PlugIn {
 			
 			// BESTE RCT FÜR JEDEN BLOCK ERMITTELN
 			// Für alle Bildabschnitte
-			for (int x = 1; x <= stack.getSize(); x++) {
+			for (int x = 1; x <= stack.getSize(); x++) 
+			{
 				
 				int sigtemp = 0;
 				int sigact = 0;
 				
 				// Jede RCT
-				for (int q = 0; q < rcts.length; q++) {
+				for (int q = 0; q < rcts.length; q++) 
+				{
 
 					System.out.println("***************  Abschnitt : " + x + "     Fange an mit RCT " + rcts[q]);
 					System.out.println("BEST : " + sigenergy[x-1]);
@@ -307,14 +330,19 @@ public class TeamQuattro_ implements PlugIn {
 					int yvu[][][] = functions.iprun(stack.getProcessor(x), mode, rcts[q]);
 							
 					// Signalenergie per Pixel im Block , Bester wird gespeichert in sigenergy[]
-					for (int i = 0; i < yvu.length; i++) {
-						for (int y = 0; y < yvu[0].length; y++) {
+					for (int i = 0; i < yvu.length; i++) 
+					{
+						for (int y = 0; y < yvu[0].length; y++)
+						{
 						
 							sigact = (yvu[i][y][0]*yvu[i][y][0])+(yvu[i][y][1]*yvu[i][y][1])+(yvu[i][y][2]*yvu[i][y][2]);
 							
-							if( sigtemp == 0){
+							if( sigtemp == 0)
+							{
 								sigtemp = sigact;
-							} else if( sigact < sigtemp){
+							} 
+							else if( sigact < sigtemp)
+							{
 								
 								System.out.println("SWAP : "  + sigtemp + " = " + sigact);
 								
@@ -332,34 +360,40 @@ public class TeamQuattro_ implements PlugIn {
 			encode(sigenergy , stack,iplus.getWidth(),iplus.getHeight());
 			
 			
-			for (int z = 0 ; z < sigenergy.length ; z++){
+			for (int z = 0 ; z < sigenergy.length ; z++)
+			{
 				System.out.println(sigenergy[z]);
 			}
 			
 			
 		// Rücktransformation
-		} else {
+		} 
+		else 
+		{
 			
 			
 			ImagePlus iplus = WindowManager.getCurrentImage();
 			
 			// 3 Bilder bei Rücktransformation vorhanden? 
-			if(WindowManager.getImageCount() < 3){
+			if(WindowManager.getImageCount() < 3)
+			{
 				IJ.showMessage("Bitte drei Bilder auswählen!");
 				return;
 			}
 			
 			// Bildgröße prüfen
 			if(WindowManager.getImage(1).getHeight() != WindowManager.getImage(2).getHeight() 
-					|| WindowManager.getImage(1).getHeight() != WindowManager.getImage(3).getHeight()
-					|| WindowManager.getImage(2).getHeight() != WindowManager.getImage(3).getHeight() ){
+				|| WindowManager.getImage(1).getHeight() != WindowManager.getImage(3).getHeight()
+				|| WindowManager.getImage(2).getHeight() != WindowManager.getImage(3).getHeight() )
+			{
 				IJ.showMessage("Bitte drei gleich große Bilder auswählen!");
 				return;
 			}
 			
 			if(WindowManager.getImage(1).getWidth() != WindowManager.getImage(2).getWidth() 
-					|| WindowManager.getImage(1).getWidth() != WindowManager.getImage(3).getWidth()
-					|| WindowManager.getImage(2).getWidth() != WindowManager.getImage(3).getWidth() ){
+				|| WindowManager.getImage(1).getWidth() != WindowManager.getImage(3).getWidth()
+				|| WindowManager.getImage(2).getWidth() != WindowManager.getImage(3).getWidth() )
+			{
 				IJ.showMessage("Bitte drei gleich große Bilder auswählen!");
 				return;
 			}
@@ -370,7 +404,8 @@ public class TeamQuattro_ implements PlugIn {
 			
 			
 			// Ungerade Bildmaße abfangen
-			if(iplus.getWidth()%wide > 0 || iplus.getHeight()%high > 0 ){
+			if(iplus.getWidth()%wide > 0 || iplus.getHeight()%high > 0 )
+			{
 					IJ.showMessage("Bitte anderes Bild wählen!");
 					return;
 			}

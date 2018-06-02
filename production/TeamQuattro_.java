@@ -65,7 +65,7 @@ public class TeamQuattro_ implements PlugIn {
 	
 	//Funktion zur adaptiven Hintransformierung eines RGB-Bildes in den YUV Farbraum
 	public void encode(String[] sigen , ImageStack stack, int w, int h){
-		functions.debug = true;
+		functions.debug = true; //sorgt dafür, das ausgegebene Bilder angezeigt werden
 		
 		ImagePlus[] imps = null;
 		ImageProcessor[] ips = null;
@@ -105,7 +105,8 @@ public class TeamQuattro_ implements PlugIn {
 						
 						ipstemp = functions.iprun(stack.getProcessor(1), mode , "A7_1",true);
 						
-						ips[0].insert(ipstemp[0], 0, 0);
+						//der .insert aufruf fügt die einzelnen Blöcke an der richtigen stelle ein, so dass wieder ein Bild daraus entsteht
+						ips[0].insert(ipstemp[0], 0, 0); 
 						ips[1].insert(ipstemp[1], 0, 0);
 						ips[2].insert(ipstemp[2], 0, 0);
 						
@@ -205,7 +206,7 @@ public class TeamQuattro_ implements PlugIn {
 					
 					tempimg[0].putPixel(x, y, yvu2);
 				
-					IJ.showStatus("RUNING    Spalte : " + x + " |   Zeile : "+y );
+					IJ.showStatus("RUNNING    Spalte : " + x + " |   Zeile : " + y + " BLOCK :  " + z );
 				}	
 				
 			}
@@ -357,6 +358,7 @@ public class TeamQuattro_ implements PlugIn {
 
 			}
 			
+			//Aufruf der encode Funktion zur Hintransformierung in den gewünschte Farbraum
 			encode(sigenergy , stack,iplus.getWidth(),iplus.getHeight());
 			
 			
@@ -368,7 +370,7 @@ public class TeamQuattro_ implements PlugIn {
 			
 		// Rücktransformation
 		} 
-		else 
+		else          
 		{
 			
 			
@@ -410,7 +412,7 @@ public class TeamQuattro_ implements PlugIn {
 					return;
 			}
 			
-			
+			//Aufruf der decode Methode zur Rücktransformation in RGB
 			decode(iplus.getWidth(),iplus.getHeight());
 			
 			

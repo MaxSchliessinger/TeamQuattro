@@ -23,8 +23,10 @@ public class functions  {
 
 		ImageStack stack = new ImageStack(width, height); // Anlegen eines ImageStacks
 
-		for (int y = 0; y < high; y++) {
-			for (int x = 0; x < wide; x++) {
+		for (int y = 0; y < high; y++) 
+		{
+			for (int x = 0; x < wide; x++) 
+			{
 				iproc.setRoi(x * width, y * height, width, height);
 				stack.addSlice(null, iproc.crop());
 			}
@@ -63,7 +65,8 @@ public class functions  {
  * DEBUG START
  */
 		
-		if (debug) {
+		if (debug) 
+		{
 
 			imps = new ImagePlus[3];
 			ips = new ImageProcessor[3];
@@ -71,11 +74,14 @@ public class functions  {
 			ips[1] = new FloatProcessor(w, h);
 			ips[2] = new FloatProcessor(w, h);
 			String label[] = new String[3];
-			if (rct.equals("RGB")) {
+			if (rct.equals("RGB")) 
+			{
 				label[0] = " (R)";
 				label[1] = " (G)";
 				label[2] = " (B)";
-			} else {
+			} 
+			else 
+			{
 				label[0] = " (Y)";
 				label[1] = " (U)";
 				label[2] = " (V)";
@@ -101,8 +107,10 @@ public class functions  {
 /*																																													*/
 /*------------------------------------------------------------------------------------------*/
 		
-		for (col = 0; col < w; col++) {
-			for (row = 0; row < h; row++) {
+		for (col = 0; col < w; col++) 
+		{
+			for (row = 0; row < h; row++) 
+			{
 				// get the pixel
 				p = ip.getPixel(col, row);
 				
@@ -1850,7 +1858,8 @@ public class functions  {
 /* ***************************    back transformation    *********************************  */
 /*																																													*/
 /*------------------------------------------------------------------------------------------*/
-				else if (mode.equals("dec")) {
+				else if (mode.equals("dec")) 
+				{
 					
 					r = y1; // R
 					g = u1; // G
@@ -3950,7 +3959,9 @@ public class functions  {
 						yvu[col][row][2] = b;
 					}
 
-				} else {
+				} 
+				else 
+				{
 					values[0] = r;
 					values[1] = g;
 					values[2] = b;
@@ -3960,7 +3971,8 @@ public class functions  {
 /*
 * DEBUG START
 */
-				if(debug){
+				if(debug)
+				{
 				
 					// put the pixel back
 					ips[0].putPixelValue(col, row, values[0]);
@@ -3984,10 +3996,12 @@ public class functions  {
 * DEBUG START
 */
 		
-		if(debug){
+		if(debug)
+		{
 
 			// show separated images
-			if (debug) {
+			if (debug) 
+			{
 				imps[0].show();
 				imps[1].show();
 				imps[2].show();
@@ -4046,8 +4060,10 @@ public class functions  {
 /*																																													*/
 /*------------------------------------------------------------------------------------------*/
 		
-		for (col = 0; col < w; col++) {
-			for (row = 0; row < h; row++) {
+		for (col = 0; col < w; col++) 
+		{
+			for (row = 0; row < h; row++) 
+			{
 				// get the pixel
 				p = ip.getPixel(col, row);
 				r = ((p & 0xff0000) >> 16); // R
@@ -5794,7 +5810,8 @@ public class functions  {
 /* ***************************    back transformation    *********************************  */
 /*																																													*/
 /*------------------------------------------------------------------------------------------*/
-				else if (mode.equals("dec")) {
+				else if (mode.equals("dec")) 
+				{
 					r = ((p & 0xff0000) >> 16); // Y
 					g = ((p & 0x00ff00) >> 8); // U
 					b = (p & 0x0000ff); // V
@@ -7423,7 +7440,9 @@ public class functions  {
 						values[2] = b;
 					}
 
-				} else {
+				} 
+				else 
+				{
 					values[0] = r;
 					values[1] = g;
 					values[2] = b;

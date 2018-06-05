@@ -1,11 +1,8 @@
-import java.awt.HeadlessException;
-
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
 import ij.WindowManager;
 import ij.gui.GenericDialog;
-import ij.plugin.NewPlugin;
 import ij.plugin.PlugIn;
 import ij.process.ColorProcessor;
 import ij.process.FloatProcessor;
@@ -27,16 +24,15 @@ public class TeamQuattro_ implements PlugIn {
 			"A6_4", "A6_5", "A6_6", "A6_7", "A6_8", "A6_9", "A6_10", "A6_11", "A6_12", "A7_1", "A7_2", "A7_3", "A7_4",
 			"A7_5", "A7_6", "A7_7", "A7_8", "A7_9", "A7_10", "A7_11", "A7_12", "A8_1", "A8_2", "A8_3", "A8_4", "A8_5",
 			"A8_6", "A8_7", "A8_8", "A8_9", "A8_10", "A8_11", "A8_12", "A9_1", "A9_2", "A9_3", "A9_4", "A9_5", "A9_6",
-			"A9_7", "A9_8", "A9_9", "A9_10", "A9_11", "A9_12", "B1_1", "B1_2", "B2_1", "B2_3", "B3_2", "B3_3", "B4_1",
-			"B5_2", "B6_3", "PEI09" };
+			"A9_7", "A9_8", "A9_9", "A9_10", "A9_11", "A9_12"};
 
-	// Dialog um Eingaben vom Nutzer bzgl. der BlockgrÃ¶ÃŸe einzuholen
+	// Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
 	public static void addDialogue() {
 
 		// Nutzen des in ImageJ vorgefertigten "GenericDialog"
 		GenericDialog dialog = new GenericDialog("Enter the number of blocks!");
 
-		// HinzufÃƒÂ¼gen von Eingabefeldern
+		// HinzufÃ¼gen von Eingabefeldern
 		dialog.addNumericField("Number of blocks in a row: ", 2, 0);
 		dialog.addNumericField("Number of blocks in a column: ", 2, 0);
 
@@ -51,7 +47,7 @@ public class TeamQuattro_ implements PlugIn {
 		// Anzeigen des Dialoges
 		dialog.showDialog();
 
-		// PrÃ¼fen ob Dialog abgebrochen wurde
+		// Prüfen ob Dialog abgebrochen wurde
 		if (dialog.wasCanceled()) {
 			return ;
 		}
@@ -65,7 +61,7 @@ public class TeamQuattro_ implements PlugIn {
 	
 	//Funktion zur adaptiven Hintransformierung eines RGB-Bildes in den YUV Farbraum
 	public void encode(String[] sigen , ImageStack stack, int w, int h){
-		functions.debug = true; //sorgt dafÃ¼r, das ausgegebene Bilder angezeigt werden
+		functions.debug = true; //sorgt dafür, das ausgegebene Bilder angezeigt werden
 		
 		ImagePlus[] imps = null;
 		ImageProcessor[] ips = null;
@@ -105,7 +101,7 @@ public class TeamQuattro_ implements PlugIn {
 						
 						ipstemp = functions.iprun(stack.getProcessor(1), mode , "A7_1",true);
 						
-						//der .insert aufruf fÃ¼gt die einzelnen BlÃ¶cke an der richtigen stelle ein, so dass wieder ein Bild daraus entsteht
+						//der .insert aufruf fügt die einzelnen Blöcke an der richtigen stelle ein, so dass wieder ein Bild daraus entsteht
 						ips[0].insert(ipstemp[0], 0, 0); 
 						ips[1].insert(ipstemp[1], 0, 0);
 						ips[2].insert(ipstemp[2], 0, 0);
@@ -136,10 +132,10 @@ public class TeamQuattro_ implements PlugIn {
 		
 	}
 	
-	//Funktion zur RÃ¼cktransformierung dreier YUV Bilder in den RGB Farbraum 
+	//Funktion zur Rücktransformierung dreier YUV Bilder in den RGB Farbraum 
 	public void decode(int w, int h){
 				
-		// Alle Bilder zerteilen und je Block in einem Array zusammenfÃ¼hren
+		// Alle Bilder zerteilen und je Block in einem Array zusammenführen
 		
 		ImagePlus imps = null;
 		
@@ -156,7 +152,7 @@ public class TeamQuattro_ implements PlugIn {
 		tempimg[0] = new ColorProcessor(w/wide, h/high);
 		
 
-		// Funktion die das Bild zerteilt und die BlÃ¶cke auf einen Stack legt
+		// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
 		ImageStack stack1 = functions.createStack(img1.getProcessor(), wide, high);
 		ImageStack stack2 = functions.createStack(img2.getProcessor(), wide, high);
 		ImageStack stack3 = functions.createStack(img3.getProcessor(), wide, high);
@@ -233,7 +229,7 @@ public class TeamQuattro_ implements PlugIn {
 					for (int y = 0; y < yvu[0].length; y++)
 					{
 					
-						sigact = (yvu[i][y][0]*yvu[i][y][0])+(yvu[i][y][1]*yvu[i][y][1])+(yvu[i][y][2]*yvu[i][y][2]);
+						sigact = sigact + (yvu[i][y][0]*yvu[i][y][0])+(yvu[i][y][1]*yvu[i][y][1])+(yvu[i][y][2]*yvu[i][y][2]);
 						
 						if( sigtemp == 0)
 						{
@@ -286,7 +282,7 @@ public class TeamQuattro_ implements PlugIn {
 		// Test ob ein Bild vorhanden ist
 		functions.failcheck();
 		
-		// Dialog um Eingaben vom Nutzer bzgl. der BlockgrÃ¶ÃŸe einzuholen
+		// Dialog um Eingaben vom Nutzer bzgl. der Blockgröße einzuholen
 		addDialogue();
 		
 		
@@ -296,15 +292,15 @@ public class TeamQuattro_ implements PlugIn {
 		{
 			ImagePlus iplus = WindowManager.getCurrentImage();
 			
-			// Ungerade BildmaÃŸe abfangen
+			// Ungerade Bildmaße abfangen
 			if(iplus.getWidth()%wide > 0 || iplus.getHeight()%high > 0 )
 			{
-					IJ.showMessage("Bitte anderes Bild wÃ¤hlen!");
+					IJ.showMessage("Bitte anderes Bild wählen!");
 					return;
 			}
 
 			// Anzeige: new ImagePlus("Blocks", stack).show();
-			// Funktion die das Bild zerteilt und die BlÃ¶cke auf einen Stack legt
+			// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
 			ImageStack stack = functions.createStack(iplus.getProcessor(), wide, high);
 
 			// Signalenergien speichern
@@ -312,8 +308,8 @@ public class TeamQuattro_ implements PlugIn {
 
 			
 			
-			// BESTE RCT FÃœR JEDEN BLOCK ERMITTELN
-			// FÃ¼r alle Bildabschnitte
+			// BESTE RCT FÜR JEDEN BLOCK ERMITTELN
+			// Für alle Bildabschnitte
 			for (int x = 1; x <= stack.getSize(); x++) 
 			{
 				
@@ -336,7 +332,7 @@ public class TeamQuattro_ implements PlugIn {
 						for (int y = 0; y < yvu[0].length; y++)
 						{
 						
-							sigact = (yvu[i][y][0]*yvu[i][y][0])+(yvu[i][y][1]*yvu[i][y][1])+(yvu[i][y][2]*yvu[i][y][2]);
+							sigact = sigact + (yvu[i][y][0]*yvu[i][y][0])+(yvu[i][y][1]*yvu[i][y][1])+(yvu[i][y][2]*yvu[i][y][2]);
 							
 							if( sigtemp == 0)
 							{
@@ -358,7 +354,7 @@ public class TeamQuattro_ implements PlugIn {
 
 			}
 			
-			//Aufruf der encode Funktion zur Hintransformierung in den gewÃ¼nschte Farbraum
+			//Aufruf der encode Funktion zur Hintransformierung in den gewünschte Farbraum
 			encode(sigenergy , stack,iplus.getWidth(),iplus.getHeight());
 			
 			
@@ -368,7 +364,7 @@ public class TeamQuattro_ implements PlugIn {
 			}
 			
 			
-		// RÃ¼cktransformation
+		// Rücktransformation
 		} 
 		else          
 		{
@@ -376,19 +372,19 @@ public class TeamQuattro_ implements PlugIn {
 			
 			ImagePlus iplus = WindowManager.getCurrentImage();
 			
-			// 3 Bilder bei RÃ¼cktransformation vorhanden? 
+			// 3 Bilder bei Rücktransformation vorhanden? 
 			if(WindowManager.getImageCount() < 3)
 			{
-				IJ.showMessage("Bitte drei Bilder auswÃ¤hlen!");
+				IJ.showMessage("Bitte drei Bilder auswählen!");
 				return;
 			}
 			
-			// BildgrÃ¶ÃŸe prÃ¼fen
+			// Bildgröße prüfen
 			if(WindowManager.getImage(1).getHeight() != WindowManager.getImage(2).getHeight() 
 				|| WindowManager.getImage(1).getHeight() != WindowManager.getImage(3).getHeight()
 				|| WindowManager.getImage(2).getHeight() != WindowManager.getImage(3).getHeight() )
 			{
-				IJ.showMessage("Bitte drei gleich groÃŸe Bilder auswÃ¤hlen!");
+				IJ.showMessage("Bitte drei gleich große Bilder auswählen!");
 				return;
 			}
 			
@@ -396,23 +392,23 @@ public class TeamQuattro_ implements PlugIn {
 				|| WindowManager.getImage(1).getWidth() != WindowManager.getImage(3).getWidth()
 				|| WindowManager.getImage(2).getWidth() != WindowManager.getImage(3).getWidth() )
 			{
-				IJ.showMessage("Bitte drei gleich groÃŸe Bilder auswÃ¤hlen!");
+				IJ.showMessage("Bitte drei gleich große Bilder auswählen!");
 				return;
 			}
 			
 			
-			// Funktion die das Bild zerteilt und die BlÃ¶cke auf einen Stack legt
+			// Funktion die das Bild zerteilt und die Blöcke auf einen Stack legt
 			ImageStack stack = functions.createStack(iplus.getProcessor(), wide, high);
 			
 			
-			// Ungerade BildmaÃŸe abfangen
+			// Ungerade Bildmaße abfangen
 			if(iplus.getWidth()%wide > 0 || iplus.getHeight()%high > 0 )
 			{
-					IJ.showMessage("Bitte anderes Bild wÃ¤hlen!");
+					IJ.showMessage("Bitte anderes Bild wählen!");
 					return;
 			}
 			
-			//Aufruf der decode Methode zur RÃ¼cktransformation in RGB
+			//Aufruf der decode Methode zur Rücktransformation in RGB
 			decode(iplus.getWidth(),iplus.getHeight());
 			
 			
